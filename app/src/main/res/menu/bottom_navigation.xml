@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="Home"/>
+    <item
+        android:id="@+id/nav_wallet"
+        android:icon="@drawable/ic_baseline_wallet_24"
+        android:title="Wallet"/>
+
+    <item
+        android:id="@+id/nav_team"
+        android:icon="@drawable/ic_baseline_account_tree_24"
+        android:title="Team"/>
+    <item
+        android:id="@+id/nav_statistics"
+        android:icon="@drawable/ic_baseline_equalizer_24"
+        android:title="Statistics"/>
+
+</menu>

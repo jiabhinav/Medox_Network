@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FF9800</color>
+    <color name="purple_500">#FF9800</color>
+    <color name="purple_700">#AE6903</color>
+    <color name="teal_200">#FBB958</color>
+    <color name="teal_700">#F3CD95</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="darkpurple">#E18905</color>
+
+
+    <color name="seekbar_color">#785cb3</color>
+    <color name="light_black">#9E9E9E</color>
+    <color name="red">#be0303</color>
+    <color name="red_light">#df3506</color>
+    <color name="header">#fdb66f</color>
+    <color name="coup_bg">#FACFA4</color>
+    <color name="bg_color">#04ccef</color>
+    <color name="select_color">#0490a9</color>
+    <color name="orange">#FF862D</color>
+    <color name="green">#08AF0E</color>
+    <color name="bg">#F7FDFD</color>
+    <color name="gray">#9f9f9f</color>
+
+
+    <color name="lightgray">#A9D3D1D1</color>
+    <color name="lightgray2">#c9c9c9</color>
+    <color name="layout_bg_lightgray">#dddddd</color>
+
+    <color name="colorSecondary">#727272</color>
+    <color name="colorTransparent">#00000000</color>
+    <color name="dark_gray">#888888</color>
+    <color name="dark_gray2">#393e46</color>
+    <color name="yellow">#ffe103</color>
+    <color name="gray3">#78777b</color>
+    <color name="accent2">#393e46</color>
+    <color name="pinkishgray">#c9c9c9</color>
+    <color name="secondary">#002651</color>
+    <color name="warm_gray_two">#939393</color>
+    <color name="white_three">#d7d7d7</color>
+    <color name="white_four">#e3e3e3</color>
+    <color name="slate_gray">#58616a</color>
+    <color name="black37">#4D000000</color>
+    <color name="delete_message_bg">#f2f2f2</color>
+    <color name="transparent_color">#00000000</color>
+    <color name="transparent">#04fefeff</color>
+    <color name="darkgray">#3E3D3D</color>
+    <color name="delete_message_text">#b8b8b8</color>
+    <color name="gainsboro">#DCDCDC</color>
+    <color name="black20">#99000000</color>
+    <color name="dusk">#4c477d</color>
+    <color name="dusk2">#3f3d56</color>
+    <color name="white5">#f3f1f1</color>
+    <color name="warmgrayfour">#7e7979</color>
+
+
+    <!-- dots inactive colors -->
+    <color name="dot_dark_screen1">#39d1ba</color>
+    <color name="dot_dark_screen2">#14a895</color>
+
+    <!-- dots active colors -->
+    <color name="dot_light_screen1">#785cb3</color>
+    <color name="dot_light_screen2">#785cb3</color>
+
+
+
+    <color name="greencolor">#41c2a5</color>
+    <!-- <color name="graycolor">#989696</color>-->
+    <color name="graycolor">#6C6C6C</color>
+
+    <color name="yellowcolor">#FFEB3B</color>
+    <color name="bgcolor">#f0f1f5</color>
+    <color name="redcolor">#FA3627</color>
+    <color name="greenColor">#1ADC0C</color>
+    <color name="saveGreen">#257A29</color>
+
+    <color name="transBlacl">#80000000</color>
+    <color name="rsbColorSeekBarDefault">#c3c3c3</color>
+    <color name="rsbColorThumbPressed">#FFE7E7E7</color>
+    <color name="rsbColorThumbDefault">#FFFFFF</color>
+    <color name="rsbColorThumbBorder">#FFD7D7D7</color>
+    <color name="lightcolor">#ECEBEB</color>
+
+
+    <color name="placeholder_bg">#dddddd</color>
+    <color name="item_name">#0c0c0c</color>
+    <color name="description">#1a1a1a</color>
+    <color name="chef">#777</color>
+    <color name="timestamp">#777</color>
+
+    <color name="white2">#e7e7e7</color>
+</resources>
