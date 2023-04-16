@@ -7,7 +7,7 @@ import javax.inject.Inject
     class ApiRepository @Inject constructor(
     private val apiServices: ApiServices)
 {
-   suspend fun getEntries() = apiServices.getEntries()
+   suspend fun android_dashboard(jsonObject: LinkedHashMap<String, String>) = apiServices.android_dashboard(jsonObject)
     suspend fun android_register_member(jsonObject: LinkedHashMap<String, String>) = apiServices.android_register_member(jsonObject)
 
     suspend fun android_register_otp(jsonObject: LinkedHashMap<String, String>) = apiServices.android_register_otp(jsonObject)

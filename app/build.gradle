@@ -77,4 +77,5 @@ dependencies {
     implementation 'com.intuit.sdp:sdp-android:1.1.0'
 
     implementation 'com.github.joielechong:countrycodepicker:2.4.2'
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01"
 }

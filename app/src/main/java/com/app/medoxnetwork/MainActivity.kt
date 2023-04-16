@@ -2,6 +2,7 @@ package com.app.medoxnetwork
 
 import android.os.Bundle
 import android.view.Menu
+import android.widget.TextView
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -10,11 +11,12 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import com.app.medoxnetwork.base.BaseActivity
 import com.app.medoxnetwork.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
@@ -37,8 +39,11 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_home
             ), drawerLayout
         )
+        var name=
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+        binding.appBarMain.contentMain.bottomNavigation.setupWithNavController(navController)
+        navView.getHeaderView(0).findViewById<TextView>(R.id.headername).text=sp.getUser()!!.result.name
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

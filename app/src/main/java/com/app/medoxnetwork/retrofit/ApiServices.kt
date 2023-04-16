@@ -1,17 +1,15 @@
 package com.app.medoxnetwork.retrofit
 
-import com.app.medoxnetwork.model.ModelEntry
-import com.app.medoxnetwork.model.ModelRegister
-import com.app.medoxnetwork.model.ModelUser
-import com.app.medoxnetwork.model.RegisterOTP
+import com.app.medoxnetwork.model.*
 import com.google.gson.JsonObject
 import retrofit2.Response
 import retrofit2.http.*
 
 interface ApiServices {
 
-      @GET("/entries")
-     suspend  fun getEntries(): Response<ModelEntry>
+    @FormUrlEncoded
+    @POST("android-dashboard")
+     suspend  fun android_dashboard(@FieldMap jsonObject: LinkedHashMap<String, String>): Response<ModelDashboard>
 
     @FormUrlEncoded
     @POST("android-register-member")

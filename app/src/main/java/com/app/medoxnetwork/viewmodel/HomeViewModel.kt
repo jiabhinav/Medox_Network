@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.app.medoxnetwork.model.ModelDashboard
 import com.app.medoxnetwork.model.ModelEntry
 import com.app.medoxnetwork.retrofit.ApiRepository
 import com.app.medoxnetwork.utils.Utility.getError
@@ -20,16 +21,16 @@ class HomeViewModel @Inject constructor(
      private val apiRepository: ApiRepository
 ) : ViewModel() {
 
-     val userResponse = MutableLiveData<ModelEntry>()
+     val userResponse = MutableLiveData<ModelDashboard>()
     val error: MutableLiveData<String> = MutableLiveData()
     val loading = MutableLiveData<Boolean>()
 
-    fun callAPI()
+    fun callAPI(jsonObject: LinkedHashMap<String, String>)
     {
         viewModelScope.launch {
             loading.postValue(true)
             try {
-                apiRepository.getEntries().let {
+                apiRepository.android_dashboard(jsonObject).let {
                     loading.postValue(false)
                     if (it.isSuccessful){
                         userResponse.postValue(it.body())

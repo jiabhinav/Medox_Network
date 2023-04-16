@@ -33,16 +33,16 @@ class Logout  : BottomSheetDialogFragment() ,View.OnClickListener{
         return binding.root
     }
 
-
     override fun onStart() {
         super.onStart()
-        var behavior = BottomSheetBehavior.from(binding.root.parent as View)
-        behavior.state = BottomSheetBehavior.STATE_EXPANDED
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
+        val behavior = BottomSheetBehavior.from(binding.root.parent as View)
+        behavior.state = BottomSheetBehavior.STATE_EXPANDED
     }
 
     private fun initView() {

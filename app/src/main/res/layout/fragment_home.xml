@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/swiprefresh"
+    android:layout_height="match_parent">
+
+<LinearLayout
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -31,7 +38,7 @@
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:id="@+id/mystaking"
-                android:text="0 BLV"/>
+                tools:text="0 BLV"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -48,7 +55,7 @@
                 android:textStyle="bold"
                 android:id="@+id/myteam"
                 android:layout_marginTop="@dimen/_15sdp"
-                android:text="0"/>
+                tools:text="0"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -65,7 +72,7 @@
                 android:textStyle="bold"
                 android:id="@+id/directrewards"
                 android:layout_marginTop="@dimen/_15sdp"
-                android:text="0.00 BLV"/>
+                tools:text="0.00 BLV"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -102,7 +109,7 @@
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:id="@+id/stackingrewards"
-                android:text="0.00 BLV"/>
+                tools:text="0.00 BLV"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -119,7 +126,7 @@
                 android:textStyle="bold"
                 android:id="@+id/teamrewards"
                 android:layout_marginTop="@dimen/_15sdp"
-                android:text="0.00 BLV"/>
+                tools:text="0.00 BLV"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -135,7 +142,7 @@
                 android:textStyle="bold"
                 android:layout_marginTop="@dimen/_15sdp"
                 android:id="@+id/totalrewards"
-                android:text="0.00 BLV"/>
+                tools:text="0.00 BLV"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -172,9 +179,10 @@
                    android:textSize="@dimen/_12sdp"
                    android:textColor="@color/white"
                    android:textStyle="bold"
+                   android:id="@+id/totalparticipate"
                    android:layout_gravity="center_horizontal"
                    android:layout_marginTop="@dimen/_12sdp"
-                   android:text="10,790,842"/>
+                   tools:text="10,790,842"/>
                <TextView
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
@@ -190,9 +198,10 @@
                    android:textSize="@dimen/_12sdp"
                    android:textColor="@color/white"
                    android:textStyle="bold"
+                   android:id="@+id/countries"
                    android:layout_gravity="center_horizontal"
                    android:layout_marginTop="@dimen/_12sdp"
-                   android:text="205"/>
+                   tools:text="205"/>
                <TextView
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
@@ -219,7 +228,8 @@
                            android:textSize="@dimen/_12sdp"
                            android:textColor="@color/white"
                            android:textStyle="bold"
-                           android:text="434,34,23423,3"/>
+                           android:id="@+id/totalstackpool"
+                           tools:text="434,34,23423,3"/>
                        <TextView
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
@@ -240,7 +250,8 @@
                            android:textSize="@dimen/_12sdp"
                            android:textColor="@color/white"
                            android:textStyle="bold"
-                           android:text="$4343,3434,00"/>
+                           android:id="@+id/totalstackedpoolusd"
+                           tools:text="$4343,3434,00"/>
                        <TextView
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
@@ -269,8 +280,8 @@
                            android:textSize="@dimen/_12sdp"
                            android:textColor="@color/white"
                            android:textStyle="bold"
-
-                           android:text="2,232,323,99"/>
+                           android:id="@+id/globetotalrewards"
+                           tools:text="2,232,323,99"/>
                        <TextView
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
@@ -291,7 +302,8 @@
                            android:textSize="@dimen/_12sdp"
                            android:textColor="@color/white"
                            android:textStyle="bold"
-                           android:text="$34,232,00"/>
+                           android:id="@+id/totalrewardsusd"
+                           tools:text="$34,232,00"/>
                        <TextView
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
@@ -321,7 +333,8 @@
                            android:textSize="@dimen/_12sdp"
                            android:textColor="@color/white"
                            android:textStyle="bold"
-                           android:text="1,90,32,32,00"/>
+                           android:id="@+id/totalwithdraws"
+                           tools:text="1,90,32,32,00"/>
                        <TextView
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
@@ -342,7 +355,8 @@
                            android:textSize="@dimen/_12sdp"
                            android:textColor="@color/white"
                            android:textStyle="bold"
-                           android:text="205"/>
+                           android:id="@+id/totalwithdrawusd"
+                           tools:text="205"/>
                        <TextView
                            android:layout_width="wrap_content"
                            android:layout_height="wrap_content"
@@ -371,39 +385,67 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/_12sdp"
-            android:textColor="@color/purple_200"
-            android:textStyle="bold"
-            android:layout_margin="@dimen/_15sdp"
-            android:id="@+id/addfriend"
-            android:padding="10dp"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:drawablePadding="4dp"
-            android:drawableTint="@color/purple_200"
-            android:drawableLeft="@drawable/ic_baseline_person_add_24"
-            android:text="Add Referral"/>
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        android:id="@+id/rltabtoearm">
 
         <TextView
+            android:id="@+id/addfriend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/_12sdp"
-            android:textColor="@color/purple_200"
-            android:textStyle="bold"
-            android:layout_margin="@dimen/_15sdp"
-            android:id="@+id/stakemnt"
-            android:padding="10dp"
-            android:layout_alignParentRight="true"
+            android:layout_marginStart="@dimen/_15sdp"
             android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_15sdp"
+            android:drawableLeft="@drawable/ic_baseline_person_add_24"
             android:drawablePadding="4dp"
             android:drawableTint="@color/purple_200"
-            android:drawableLeft="@drawable/ic_baseline_person_add_24"
-            android:text="Stake MNT"/>
+            android:padding="10dp"
+            android:text="Add Referral"
+            android:textColor="@color/purple_200"
+            android:textSize="@dimen/_12sdp" />
+
+        <TextView
+            android:id="@+id/stakemnt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_15sdp"
+            android:drawableLeft="@drawable/logo24dp"
+            android:drawablePadding="4dp"
+            android:padding="10dp"
+            android:text="Stake MNT"
+            android:textColor="@color/purple_200"
+            android:textSize="@dimen/_12sdp" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/stakemnt">
+            <ImageView
+                android:layout_width="@dimen/_200sdp"
+                android:layout_height="wrap_content"
+                android:alpha=".060"
+                android:adjustViewBounds="true"
+                android:src="@drawable/logo"/>
+            <TextView
+                android:id="@+id/tabtoearn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_centerInParent="true"
+                android:text="Tab to earn MMT"
+                android:textStyle="bold"
+                android:textColor="@color/lightgray"
+                android:textSize="@dimen/_12sdp" />
+        </RelativeLayout>
+
     </RelativeLayout>
 
-
-
 </LinearLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
