@@ -34,7 +34,7 @@ object ApiModule {
             OkHttpClient.addNetworkInterceptor { chain ->
                 val original = chain.request()
                 val requestBuilder =
-                    original.newBuilder().addHeader("Content-Type", "application/json")
+                    original.newBuilder().addHeader("Content-Type", "application/text")
                         .addHeader("Accept", "application/json")
                         .addHeader("Authorization", "Bearer + SesssionManager.getInstance()?.getToken()!!")
 

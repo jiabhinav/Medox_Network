@@ -10,9 +10,14 @@
     <string name="wait_processing">Please wait…</string>
     <string name="home">Home</string>
     <string name="or">OR</string>
-    <string name="register_now">Register Now</string>
-    <string name="login">Login</string>
+    <string name="register_now">Sign Up</string>
+    <string name="login">Sign In</string>
     <string name="login_using_username">Login using Username</string>
     <string name="enter_username">Enter Username</string>
-    <string name="login_desc">You have to login with Username(Username is cerated by you) and password.</string>
+    <string name="login_desc">You have to Sign In with Username(Username is cerated by you) and password.</string>
+    <string name="password">Password</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="enter_your_referral_code">Enter your Referral Code</string>
+    <string name="enter_email_address">Enter Email Address</string>
 </resources>

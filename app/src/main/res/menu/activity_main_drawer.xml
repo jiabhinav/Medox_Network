@@ -8,5 +8,41 @@
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_baseline_home_24"
             android:title="@string/home" />
+
+        <item
+            android:id="@+id/nav_myprofile"
+            android:icon="@drawable/ic_baseline_person_24"
+            android:title="My Profile" />
+
+        <item
+            android:id="@+id/nav_changepassword"
+            android:icon="@drawable/ic_baseline_lock_24"
+            android:title="Change Password" />
+
+        <item
+            android:id="@+id/nav_news"
+            android:icon="@drawable/ic_baseline_featured_play_list_24"
+            android:title="News" />
+        <item
+            android:id="@+id/nav_promotion"
+            android:icon="@drawable/ic_baseline_local_offer_24"
+            android:title="Promotions" />
+        <item
+            android:id="@+id/nav_support"
+            android:icon="@drawable/ic_baseline_support_agent_24"
+            android:title="Support" />
+        <item
+            android:id="@+id/nav_medoxpdf"
+            android:icon="@drawable/ic_baseline_picture_as_pdf_24"
+            android:title="Medox Network PDF" />
+        <item
+            android:id="@+id/nav_connectwithus"
+            android:icon="@drawable/ic_baseline_connect_without_contact_24"
+            android:title="Connect with us" />
+
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/logout"
+            android:title="Logout" />
     </group>
 </menu>

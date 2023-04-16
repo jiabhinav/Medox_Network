@@ -11,7 +11,9 @@ import android.net.NetworkCapabilities
 import android.net.Uri
 import android.os.Build
 import android.provider.Settings
+import android.text.TextUtils
 import android.util.Log
+import android.util.Patterns
 import android.view.Gravity
 import android.view.View
 import android.view.Window
@@ -69,6 +71,10 @@ object  Utility {
             t.setGravity(Gravity.BOTTOM, 0, 0)
             t.show()
         }
+    }
+
+    fun isValidEmail(target: CharSequence?): Boolean {
+        return !TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches()
     }
 
     @SuppressLint("NewApi")

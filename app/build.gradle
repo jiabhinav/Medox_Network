@@ -25,9 +25,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
-            buildConfigField "String", "IMAGE_BASE_URL", "\"https://biopasstest.com:8443/truntrance\""
-            buildConfigField "String", "BASE_URL", "\"https://api.publicapis.org/\""
-            buildConfigField "String", "SESSION", "\"universal_life\""
+            buildConfigField "String", "IMAGE_BASE_URL", "\"https://fintechcoin.online/medox/public/profile-image/\""
+            buildConfigField "String", "BASE_URL", "\"https://fintechcoin.online/medox/\""
+            buildConfigField "String", "SESSION", "\"medox\""
 
         }
     }

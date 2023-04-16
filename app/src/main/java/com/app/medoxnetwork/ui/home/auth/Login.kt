@@ -5,46 +5,62 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
+import android.widget.Toast
+import androidx.activity.viewModels
+import com.app.medoxnetwork.MainActivity
 import com.app.medoxnetwork.R
 import com.app.medoxnetwork.base.BaseActivity
-import com.app.medoxnetwork.databinding.ActivityLoginBinding
 import com.app.medoxnetwork.databinding.AlertOtpBinding
+import com.app.medoxnetwork.databinding.LoginActivityBinding
 
 import com.app.medoxnetwork.utils.Utility
+import com.app.medoxnetwork.viewmodel.RegisterViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.gson.Gson
+import com.google.gson.JsonObject
+import com.google.gson.JsonParser
+import dagger.hilt.android.AndroidEntryPoint
+import org.json.JSONException
+import org.json.JSONObject
+import java.util.LinkedHashMap
 
+@AndroidEntryPoint
 class Login : BaseActivity(),View.OnClickListener {
 
-    lateinit var binding:ActivityLoginBinding
-    lateinit var alertbinding: AlertOtpBinding
+    lateinit var binding:LoginActivityBinding
     lateinit var mBottomSheetDialog: BottomSheetDialog
-    var countDownTimer: CountDownTimer? = null
-    var typeApi=1
-    var otp=""
+    private val viewModel: RegisterViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-         binding= ActivityLoginBinding.inflate(layoutInflater)
-          binding.sendotp.setOnClickListener(this)
+         binding= LoginActivityBinding.inflate(layoutInflater)
+          binding.login.setOnClickListener(this)
            binding.register.setOnClickListener(this)
         setContentView(binding.root)
+        observeData()
     }
 
 
     override fun onClick(v: View?) {
         when(v?.id)
         {
-            R.id.sendotp -> {
+            R.id.login -> {
 
-                if (binding.editemail.text.toString().equals("")||binding.editemail.text.toString().length<10)
+                if (binding.editemail.text.toString().equals(""))
                 {
-                   Utility.showToast("Enter 10 digit mobile number",2)
+                   Utility.showToast("Enter registered email address",2)
+                }
+                if (binding.password.text.toString().equals(""))
+                {
+                    Utility.showToast("Enter valid password",2)
                 }
                 else
                 {
-                    generateOTP(binding.editemail.text.toString())
+                    login()
                 }
             }
             R.id.close
@@ -53,129 +69,53 @@ class Login : BaseActivity(),View.OnClickListener {
             }
             R.id.register
             -> {
+                startActivity(Intent(this@Login,Register::class.java).putExtra("register",false))
+            }
 
-                startActivity(Intent(this@Login,Register::class.java).putExtra("edit",false))
+
+        }
+    }
+
+    fun login()
+    {
+        val params = LinkedHashMap<String, String>()
+        params.put("username", binding.editemail.text.toString())
+        params.put("password", binding.password.text.toString())
+        viewModel.loginUser(params)
+    }
+
+    fun observeData() {
+        viewModel.userLogin.observe(this) {
+            Log.d("TAG", "observeData: " + Gson().toJson(it))
+            if (it.status==1)
+            {
+                Utility.showToast(it.result.msg, 2)
+                sp.sessionLogin(it)
+
+                val loginsucces = Intent(this, MainActivity::class.java)
+                loginsucces.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                startActivity(loginsucces)
                 finish()
-            }
-            R.id.veryotp
-            -> {
-                if (otp.equals(alertbinding.edit1.text.toString()))
-                {
-                    loginNow()
-                }
-                else
-                {
-                    Utility.showToast("Invalid OTP!!",2)
-
-
-                }
 
             }
-
-            R.id.resendotp
-            -> {
-                if (countDownTimer != null) {
-                    countDownTimer!!.cancel()
-                }
-                generateOTP(binding.editemail.text.toString())
-                coundDownTimer(30000)
-
-            }
-
-        }
-    }
-
-
-    private fun sendotp() {
-
-        if (this::mBottomSheetDialog.isInitialized)
-        {
-            if (mBottomSheetDialog.isShowing) {
-                mBottomSheetDialog.dismiss()
+            else
+            {
+                Utility.showToast(it.result.msg, 2)
             }
         }
 
-        //Toast.makeText(Login.this, "OTP has been send on your registered mobile number!", Toast.LENGTH_SHORT).show();
-        alertbinding = AlertOtpBinding.inflate(layoutInflater)
-        mBottomSheetDialog = BottomSheetDialog(this, R.style.CustomBottomSheetDialogTheme)
-        mBottomSheetDialog.setCancelable(false)
-        mBottomSheetDialog.setCanceledOnTouchOutside(false)
-        alertbinding.close.setOnClickListener(this)
-        alertbinding.veryotp.setOnClickListener(this)
-        alertbinding.resendotp.setOnClickListener(this)
-       // alertbinding.veryotp.alpha = .8f
-        alertbinding.resendotp.alpha = .6f
-        alertbinding.resendotp.isEnabled = false
-        alertbinding.veryotp.isEnabled = false
-        mBottomSheetDialog.setContentView(alertbinding.root)
-        val bottomSheetBehavior: BottomSheetBehavior<*> = BottomSheetBehavior.from(alertbinding.getRoot().getParent() as View)
-        bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
-        mBottomSheetDialog.show()
-        alertbinding.textdesc.text = "Please enter the otp code we have sent to phone number " + binding.editemail.text.toString()
 
-        alertbinding.edit1.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                val text = alertbinding.edit1.text.toString()
-                if (text.length==4) {
-                    alertbinding.veryotp.alpha=1f
-                    alertbinding.veryotp.isEnabled=true
-                    alertbinding.edit1.onEditorAction(EditorInfo.IME_ACTION_DONE)
-                }
-
-            }
-
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-        })
-        if (countDownTimer != null) {
-            countDownTimer!!.cancel()
+        viewModel.error.observe(this) {
+            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
         }
-        coundDownTimer(30000)
-    }
 
-    private fun generateOTP(mobile: String) {
+        viewModel.loading.observe(this) {
+            loadingProgress(it)
+        }
 
-        typeApi=1
-        showDialogs(this)
-        val params = LinkedHashMap<String, String>()
-        params.put("phone",mobile)
-      /*  RetrofitApiCall.hitApi(
-            ApiClient.apiInterFace.generateOtp(params),
-            this, typeApi
-        )*/
     }
 
 
-
-
-
-    private fun loginNow() {
-        typeApi=2
-        showDialogs(this)
-        val params = LinkedHashMap<String, String>()
-        params.put("mobile_no",binding.editemail.text.toString())
-        params.put("password",otp.toString())
-       /* RetrofitApiCall.hitApi(
-            ApiClient.apiInterFace.login(params),
-            this, typeApi
-        )*/
-    }
-
-
-    private fun coundDownTimer(time: Int) {
-        countDownTimer = object : CountDownTimer(time.toLong(), 1000) {
-            override fun onTick(millisUntilFinished: Long) {
-                alertbinding.time.text = "00:" + millisUntilFinished / 1000 + ""
-            }
-
-            override fun onFinish() {
-                alertbinding.time.text = "00:00"
-                alertbinding.resendotp.alpha = 1f
-                alertbinding.resendotp.isEnabled = true
-            }
-        }.start()
-    }
 
 
 }

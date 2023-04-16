@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/_20sdp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login"
+        android:fontFamily="@font/montserrat_bold"
+        android:textColor="@color/black_500"
+        android:textSize="@dimen/_12sdp"
+        android:layout_gravity="center_horizontal" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Let's Start to Earn Medox Network"
+        android:fontFamily="@font/montserrat_regular"
+        android:textSize="@dimen/_10sdp"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Username"
+        android:textColor="@color/black_500"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:textSize="@dimen/_12sdp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:background="@drawable/edit_bg"
+        android:padding="@dimen/_4sdp">
+
+
+        <EditText
+            android:id="@+id/editemail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@color/white"
+            android:hint="Enter user name"
+            android:inputType="textEmailAddress"
+            android:maxLength="50"
+            android:paddingLeft="@dimen/_10sdp"
+            android:paddingTop="@dimen/_6sdp"
+            android:paddingBottom="@dimen/_6sdp"
+            android:textColor="@color/dark_gray2"
+            android:textColorHint="@color/hint_color"
+            android:textSize="@dimen/_12sdp" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/password"
+        android:textColor="@color/black_500"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:textSize="@dimen/_12sdp"
+        android:textStyle="bold" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:background="@drawable/edit_bg"
+        android:padding="@dimen/_4sdp">
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@color/white"
+            android:hint="@string/enter_password"
+            android:inputType="textPassword"
+            android:maxLength="30"
+            android:paddingLeft="@dimen/_10sdp"
+            android:paddingTop="@dimen/_4sdp"
+            android:paddingBottom="@dimen/_6sdp"
+            android:textColor="@color/dark_gray2"
+            android:textColorHint="@color/hint_color"
+            android:textSize="@dimen/_12sdp" />
+    </RelativeLayout>
+
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:backgroundTint="@color/purple_200"
+        android:drawableTint="@color/white"
+        android:padding="@dimen/_8sdp"
+        android:text="@string/sign_in"
+        android:textAllCaps="false"
+        android:textColor="@color/white" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:text="Forgot Password? "
+        android:layout_gravity="end"
+        android:textSize="@dimen/_10sdp"
+        android:fontFamily="@font/montserrat_regular"
+        android:textColor="@color/red" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height=".5dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight=".5"
+            android:background="@color/pinkishgray" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_marginRight="@dimen/_5sdp"
+            android:text="@string/or" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height=".5dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight=".5"
+            android:background="@color/pinkishgray" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:backgroundTint="@color/black_500"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:selectableItemBackground"
+        android:gravity="center"
+        android:padding="@dimen/_8sdp"
+        android:text="@string/register_now"
+        android:textAllCaps="false"
+        android:textColor="@color/white">
+    </Button>
+
+
+</LinearLayout>

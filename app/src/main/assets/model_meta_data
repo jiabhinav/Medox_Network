@@ -1,0 +1,11 @@
+{
+	"modelName": "BiocubeArcfaceGlint360kResnet100.tflite",
+	"modelVersion": 4.1,
+	"inputImageSize": "112X112",
+	"embeddingSIze": 512,
+	"modelCreationDate": "17-Nov-2021",
+	"author": "Krishan Gopal Sharma",
+	"channel": 3,
+	"threshold": 1.90,
+	"distance": "Euclid distance"
+}
