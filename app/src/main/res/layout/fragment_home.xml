@@ -8,19 +8,19 @@
     android:layout_height="match_parent">
 
 <LinearLayout
-
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ui.home.HomeFragment">
+
    <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/home_bg"
-      android:orientation="vertical"
-       android:paddingTop="@dimen/_15sdp"
-       android:paddingStart="@dimen/_15sdp"
-       android:paddingEnd="@dimen/_15sdp">
+    android:orientation="vertical"
+    android:paddingTop="@dimen/_15sdp"
+    android:paddingStart="@dimen/_15sdp"
+    android:paddingEnd="@dimen/_15sdp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -426,6 +426,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_5sdp"
             android:layout_centerHorizontal="true"
+            android:id="@+id/rltab"
             android:layout_below="@+id/stakemnt">
             <ImageView
                 android:layout_width="@dimen/_200sdp"
@@ -439,10 +440,12 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:layout_centerInParent="true"
-                android:text="Tab to earn MMT"
+                android:text="Scratch to earn MMT"
                 android:textStyle="bold"
                 android:textColor="@color/lightgray"
                 android:textSize="@dimen/_12sdp" />
+
+
         </RelativeLayout>
 
     </RelativeLayout>

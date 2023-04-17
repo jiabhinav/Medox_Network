@@ -52,7 +52,7 @@ class Login : BaseActivity(),View.OnClickListener {
 
                 if (binding.editemail.text.toString().equals(""))
                 {
-                   Utility.showToast("Enter registered email address",2)
+                   Utility.showToast("Enter registered username",2)
                 }
                 if (binding.password.text.toString().equals(""))
                 {

@@ -8,6 +8,8 @@ import javax.inject.Inject
     private val apiServices: ApiServices)
 {
    suspend fun android_dashboard(jsonObject: LinkedHashMap<String, String>) = apiServices.android_dashboard(jsonObject)
+    suspend fun android_claim_reward(jsonObject: LinkedHashMap<String, String>) = apiServices.android_claim_reward(jsonObject)
+
     suspend fun android_register_member(jsonObject: LinkedHashMap<String, String>) = apiServices.android_register_member(jsonObject)
 
     suspend fun android_register_otp(jsonObject: LinkedHashMap<String, String>) = apiServices.android_register_otp(jsonObject)

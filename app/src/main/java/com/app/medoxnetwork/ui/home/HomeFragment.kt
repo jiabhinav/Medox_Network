@@ -1,20 +1,27 @@
 package com.app.medoxnetwork.ui.home
 
+import android.app.AlertDialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import com.app.medoxnetwork.R
 import com.app.medoxnetwork.base.BaseFragment
+import com.app.medoxnetwork.databinding.AlertGiftcardBinding
 import com.app.medoxnetwork.databinding.FragmentHomeBinding
 import com.app.medoxnetwork.model.ModelDashboard
+import com.app.medoxnetwork.utils.ScratchView
 import com.app.medoxnetwork.utils.Utility.showToast
 import com.app.medoxnetwork.viewmodel.HomeViewModel
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment() {
@@ -22,6 +29,9 @@ class HomeFragment : BaseFragment() {
     private var binding: FragmentHomeBinding? = null
     
     private val viewModel: HomeViewModel by viewModels()
+    var dialog:AlertDialog?=null
+
+    var modelDashboard:ModelDashboard?=null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -58,6 +68,18 @@ class HomeFragment : BaseFragment() {
             binding!!.swiprefresh.isRefreshing=false
             callAPI()
         }
+        binding!!.rltab.setOnClickListener{
+            if(modelDashboard!!.result.scratch_card==0)
+            {
+                alertGiftCard()
+            }
+            else
+            {
+                showToast("No Coupon Available",2)
+            }
+
+        }
+
 
         observeData()
         callAPI()
@@ -75,11 +97,27 @@ class HomeFragment : BaseFragment() {
             Log.d("TAG", "observeData: " + Gson().toJson(it))
             if(it.status==1)
             {
+                modelDashboard=it
                 setDataOnText(it.result)
+            }
+            else
+            {
+                showToast("Contact to support",2)
+            }
+
+        }
+
+        viewModel.claim.observe(requireActivity()) {
+            Log.d("TAG", "observeData: " + Gson().toJson(it))
+            if(it.status==1)
+            {
+                dialog?.dismiss()
+                callAPI()
 
             }
             else
             {
+                dialog?.dismiss()
                 showToast("Contact to support",2)
             }
 
@@ -118,6 +156,37 @@ class HomeFragment : BaseFragment() {
         binding!!.totalwithdraws.text=model.total_withdraw.toString()
         binding!!.totalrewardsusd.text=model.total_withdraw_usd.toString()
 
+    }
+
+    fun alertGiftCard() {
+        val builder: AlertDialog.Builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Name")
+        val customLayout = AlertGiftcardBinding.inflate(layoutInflater)
+        builder.setView(customLayout.root)
+        dialog = builder.create()
+        dialog?.show()
+        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        customLayout.scratchView.setRevealListener(object : ScratchView.IRevealListener {
+            override fun onRevealed(scratchView: ScratchView?) {
+                Toast.makeText(requireContext(), "You won 1 MNT Token", Toast.LENGTH_LONG).show()
+                claimAPI()
+            }
+
+            override fun onRevealPercentChangedListener(scratchView: ScratchView?, percent: Float) {
+                if (percent >= 0.5) {
+                    Log.d("Reveal Percentage", "onRevealPercentChangedListener: $percent")
+                }
+            }
+        })
+
+
+    }
+
+    fun claimAPI()
+    {
+        val params = LinkedHashMap<String, String>()
+        params.put("username", sp.getUser()!!.result.username)
+        viewModel.android_claim_reward(params)
     }
 
 

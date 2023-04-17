@@ -91,4 +91,7 @@
     <color name="timestamp">#777</color>
 
     <color name="white2">#e7e7e7</color>
+
+    <color name="scratch_start_gradient">#e5e5e5</color>
+    <color name="scratch_end_gradient">#cccccc</color>
 </resources>

@@ -12,6 +12,10 @@ interface ApiServices {
      suspend  fun android_dashboard(@FieldMap jsonObject: LinkedHashMap<String, String>): Response<ModelDashboard>
 
     @FormUrlEncoded
+    @POST("android-claim-reward")
+    suspend  fun android_claim_reward(@FieldMap jsonObject: LinkedHashMap<String, String>): Response<ModelClaim>
+
+    @FormUrlEncoded
     @POST("android-register-member")
     suspend  fun android_register_member(@FieldMap jsonObject: LinkedHashMap<String, String>): Response<ModelRegister>
 
