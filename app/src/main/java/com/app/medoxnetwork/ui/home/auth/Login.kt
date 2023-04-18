@@ -40,6 +40,7 @@ class Login : BaseActivity(),View.OnClickListener {
          binding= LoginActivityBinding.inflate(layoutInflater)
           binding.login.setOnClickListener(this)
            binding.register.setOnClickListener(this)
+        binding.forgotpassword.setOnClickListener(this)
         setContentView(binding.root)
         observeData()
     }
@@ -72,6 +73,11 @@ class Login : BaseActivity(),View.OnClickListener {
                 startActivity(Intent(this@Login,Register::class.java).putExtra("register",false))
             }
 
+            R.id.forgotpassword
+            -> {
+                forgotpasssowrd()
+            }
+
 
         }
     }
@@ -83,6 +89,21 @@ class Login : BaseActivity(),View.OnClickListener {
         params.put("password", binding.password.text.toString())
         viewModel.loginUser(params)
     }
+
+    fun forgotpasssowrd()
+    {
+        if (binding.editemail.text.toString().equals(""))
+        {
+            Utility.showToast("Enter registered username",2)
+        }
+        else{
+            val params = LinkedHashMap<String, String>()
+            params.put("username", binding.editemail.text.toString())
+            viewModel.forgotpassword(params)
+        }
+
+    }
+
 
     fun observeData() {
         viewModel.userLogin.observe(this) {
@@ -97,6 +118,18 @@ class Login : BaseActivity(),View.OnClickListener {
                 startActivity(loginsucces)
                 finish()
 
+            }
+            else
+            {
+                Utility.showToast(it.result.msg, 2)
+            }
+        }
+
+        viewModel.resetpassword.observe(this) {
+            Log.d("TAG", "observeData: " + Gson().toJson(it))
+            if (it.status==1)
+            {
+                Utility.showToast(it.result.msg, 2)
             }
             else
             {

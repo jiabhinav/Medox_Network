@@ -6,10 +6,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.app.medoxnetwork.model.ModelEntry
-import com.app.medoxnetwork.model.ModelRegister
-import com.app.medoxnetwork.model.ModelUser
-import com.app.medoxnetwork.model.RegisterOTP
+import com.app.medoxnetwork.model.*
 import com.app.medoxnetwork.retrofit.ApiRepository
 import com.app.medoxnetwork.utils.Utility.getError
 import com.google.gson.Gson
@@ -29,6 +26,7 @@ class RegisterViewModel @Inject constructor(
     val userLogin = MutableLiveData<ModelUser>()
 
     val verifyOTP = MutableLiveData<RegisterOTP>()
+    val resetpassword = MutableLiveData<ModelResetPassword>()
     val error: MutableLiveData<String> = MutableLiveData()
     val loading = MutableLiveData<Boolean>()
 
@@ -124,6 +122,35 @@ class RegisterViewModel @Inject constructor(
                     loading.postValue(false)
                     if (it.isSuccessful){
                         userLogin.postValue(it.body())
+                    }else{
+                        val res = getError(it)
+                        val respons=Gson().toJson(res)
+                        Log.d("TAG", "callAPI: "+respons)
+                        error.postValue(respons)
+                    }
+                }
+            }
+            catch (e:Exception)
+            {
+                loading.postValue(false)
+
+                error.postValue(e.message)
+                Log.d("TAG", "registerMember: "+e.message)
+            }
+
+        }
+
+    }
+
+    fun forgotpassword(bodyParams: LinkedHashMap<String, String>)
+    {
+        viewModelScope.launch {
+            loading.postValue(true)
+            try {
+                apiRepository.android_reset_password(bodyParams).let {
+                    loading.postValue(false)
+                    if (it.isSuccessful){
+                        resetpassword.postValue(it.body())
                     }else{
                         val res = getError(it)
                         val respons=Gson().toJson(res)

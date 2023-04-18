@@ -31,5 +31,8 @@ interface ApiServices {
     @POST("android-login-member")
     suspend  fun android_login_member(@FieldMap bodyParams: LinkedHashMap<String, String>): Response<ModelUser>
 
+    @FormUrlEncoded
+    @POST("android-reset-password")
+    suspend  fun android_reset_password(@FieldMap bodyParams: LinkedHashMap<String, String>): Response<ModelResetPassword>
 
 }

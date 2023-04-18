@@ -18,6 +18,8 @@ import javax.inject.Inject
 
     suspend fun android_login_member(bodyParams: LinkedHashMap<String, String>) = apiServices.android_login_member(bodyParams)
 
+    suspend fun android_reset_password(bodyParams: LinkedHashMap<String, String>) = apiServices.android_reset_password(bodyParams)
+
 
 
 }

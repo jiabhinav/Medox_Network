@@ -50,8 +50,6 @@ class HomeViewModel @Inject constructor(
                 error.postValue(e.message)
             }
 
-
-
         }
 
     }
@@ -78,8 +76,6 @@ class HomeViewModel @Inject constructor(
                 loading.postValue(false)
                 error.postValue(e.message)
             }
-
-
 
         }
 
