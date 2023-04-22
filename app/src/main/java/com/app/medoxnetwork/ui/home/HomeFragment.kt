@@ -1,6 +1,7 @@
 package com.app.medoxnetwork.ui.home
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -78,6 +79,10 @@ class HomeFragment : BaseFragment() {
                 showToast("No Coupon Available",2)
             }
 
+        }
+
+        binding!!.addfriend.setOnClickListener {
+            Invite()
         }
 
 
@@ -187,6 +192,27 @@ class HomeFragment : BaseFragment() {
         val params = LinkedHashMap<String, String>()
         params.put("username", sp.getUser()!!.result.username)
         viewModel.android_claim_reward(params)
+    }
+
+    fun Invite()
+    {
+        val intent = Intent()
+        intent.action = Intent.ACTION_SEND
+        intent.type = "text/plain"
+        intent.putExtra(
+            Intent.EXTRA_TEXT, """
+     Hi,
+     Inviting you to join ${getString(R.string.app_name)} an interesting app which provides you incredible offer, Refer and earn.
+     
+     Use my referrer code:
+     
+     ${sp.getUser()?.result?.username}
+     
+     Download app from link:
+     https://play.google.com/store/apps/details?id=${requireActivity().packageName}&referrer=${sp.getUser()?.result?.username}
+     """.trimIndent()
+        )
+        startActivity(intent)
     }
 
 

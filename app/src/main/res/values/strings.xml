@@ -22,4 +22,10 @@
     <string name="enter_email_address">Enter Email Address</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="funding_wallet">Funding Wallet</string>
+    <string name="bonus_wallet">Bonus Wallet</string>
+    <string name="reward_wallet">Reward Wallet</string>
+    <string name="contecttosupport">Contact to support</string>
+    <string name="team_levels">Team Levels</string>
+    <string name="total_team_members">Total Team Members</string>
 </resources>

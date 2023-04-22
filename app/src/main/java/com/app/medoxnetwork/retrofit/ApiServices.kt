@@ -35,4 +35,14 @@ interface ApiServices {
     @POST("android-reset-password")
     suspend  fun android_reset_password(@FieldMap bodyParams: LinkedHashMap<String, String>): Response<ModelResetPassword>
 
+    @FormUrlEncoded
+    @POST("android-user-wallet")
+    suspend  fun android_user_wallet(@FieldMap jsonObject: LinkedHashMap<String, String>): Response<ModelWalletList>
+
+    @FormUrlEncoded
+    @POST("android-wallet-details")
+    suspend  fun android_wallet_details(@FieldMap jsonObject: LinkedHashMap<String, String>): Response<ModelWalletHistory>
+
+
+
 }

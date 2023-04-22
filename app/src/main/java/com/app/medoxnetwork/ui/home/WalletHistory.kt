@@ -8,11 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.app.medoxnetwork.R
+import com.app.medoxnetwork.adapter.WalletHistoryAdapter
 import com.app.medoxnetwork.base.BaseFragment
 import com.app.medoxnetwork.databinding.FragmentHomeBinding
 import com.app.medoxnetwork.databinding.FragmentWalletBinding
+import com.app.medoxnetwork.databinding.FragmentWalletHistoryBinding
+import com.app.medoxnetwork.model.ModelWalletHistory
 import com.app.medoxnetwork.utils.Utility
 import com.app.medoxnetwork.viewmodel.HomeViewModel
 import com.app.medoxnetwork.viewmodel.WalletViewModel
@@ -20,13 +22,18 @@ import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class Wallet : BaseFragment() {
+class WalletHistory : BaseFragment() {
 
-    lateinit var binding:FragmentWalletBinding
+    lateinit var binding:FragmentWalletHistoryBinding
     private val viewModel: WalletViewModel by viewModels()
+    var wallet_type:Int?=1
+
+    var list=ArrayList<ModelWalletHistory.Result>()
+    lateinit var adapter: WalletHistoryAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        wallet_type=arguments?.getInt("type",1)
     }
 
     override fun onCreateView(
@@ -35,34 +42,21 @@ class Wallet : BaseFragment() {
     ): View {
         if (!this::binding.isInitialized)
         {
-            binding = FragmentWalletBinding.inflate(inflater, container, false)
+            binding = FragmentWalletHistoryBinding.inflate(inflater, container, false)
             init()
         }
         return binding.root
     }
     fun init()
     {
-        binding.card1.setOnClickListener{
-
-            val bundle=Bundle()
-            bundle.putInt("type",2)
-            findNavController().navigate(R.id.nav_wallet_history,bundle)
-        }
-        binding.card2.setOnClickListener{
-            val bundle=Bundle()
-            bundle.putInt("type",1)
-            findNavController().navigate(R.id.nav_wallet_history,bundle)
-        }
-        binding.card3.setOnClickListener{
-            val bundle=Bundle()
-            bundle.putInt("type",3)
-            findNavController().navigate(R.id.nav_wallet_history,bundle)
-        }
+        adapter= WalletHistoryAdapter(requireContext(),list)
+        binding.recyclerview.adapter=adapter
 
         binding.swiprefresh.setOnRefreshListener {
             binding.swiprefresh.isRefreshing=false
             callAPI()
         }
+
         observeData()
         callAPI()
     }
@@ -71,18 +65,19 @@ class Wallet : BaseFragment() {
     {
         val params = LinkedHashMap<String, String>()
         params.put("username", sp.getUser()!!.result.username)
-        viewModel.android_user_wallet(params)
+        params.put("wallet", wallet_type.toString())
+
+        viewModel.android_wallet_details(params)
     }
 
     fun observeData() {
-        viewModel.userwallet.observe(requireActivity()) {
+        viewModel.walletHistory.observe(requireActivity()) {
             Log.d("TAG", "observeData: " + Gson().toJson(it))
             if(it.status==1)
             {
-                binding.funding.text=it.result.funding_wallet.toString()
-                binding.bonus.text=it.result.bonus_wallet.toString()
-                binding.reward.text=it.result.reward_wallet.toString()
-
+                list.clear()
+                list.addAll(it.result)
+                adapter.notifyDataSetChanged()
             }
             else
             {

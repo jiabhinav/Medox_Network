@@ -20,6 +20,11 @@ import javax.inject.Inject
 
     suspend fun android_reset_password(bodyParams: LinkedHashMap<String, String>) = apiServices.android_reset_password(bodyParams)
 
+    suspend fun android_user_wallet(bodyParams: LinkedHashMap<String, String>) = apiServices.android_user_wallet(bodyParams)
+
+    suspend fun android_wallet_details(bodyParams: LinkedHashMap<String, String>) = apiServices.android_wallet_details(bodyParams)
+
+
 
 
 }

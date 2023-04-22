@@ -1,18 +1,21 @@
 package com.app.medoxnetwork
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
+import android.view.MenuItem
+import android.view.View
 import android.widget.TextView
-import com.google.android.material.navigation.NavigationView
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
+import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
+import androidx.navigation.NavDestination
+import androidx.navigation.findNavController
+import androidx.navigation.ui.*
 import com.app.medoxnetwork.base.BaseActivity
 import com.app.medoxnetwork.databinding.ActivityMainBinding
+import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -39,11 +42,35 @@ class MainActivity : BaseActivity() {
                 R.id.nav_home
             ), drawerLayout
         )
-        var name=
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
         binding.appBarMain.contentMain.bottomNavigation.setupWithNavController(navController)
         navView.getHeaderView(0).findViewById<TextView>(R.id.headername).text=sp.getUser()!!.result.name
+
+        navController.addOnDestinationChangedListener { navController: NavController, navDestination: NavDestination, bundle: Bundle? ->
+            val id = navDestination.id
+            visibleBottomNavigation(id)
+        }
+
+
+        navView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.nav_share -> {
+                    if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                        drawerLayout.closeDrawer(GravityCompat.START)
+                    }
+                    Invite()
+                    true
+                }
+
+                else -> {
+                    NavigationUI.onNavDestinationSelected(menuItem, navController)
+                    drawerLayout.closeDrawer(GravityCompat.START)
+                    true
+                }
+            }
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -52,8 +79,52 @@ class MainActivity : BaseActivity() {
         return true
     }
 
+
+
+
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val navController = findNavController(R.id.nav_host_fragment_content_main)
+        return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
+
+    }
+
+    fun visibleBottomNavigation(id:Int)
+    {
+        if (id==R.id.nav_home || id==R.id.nav_wallet)
+        {
+            binding.appBarMain.contentMain.bottomNavigation.visibility=View.VISIBLE
+        }
+        else
+        {
+            binding.appBarMain.contentMain.bottomNavigation.visibility=View.GONE
+        }
+    }
+
+    fun Invite()
+    {
+        val intent = Intent()
+        intent.action = Intent.ACTION_SEND
+        intent.type = "text/plain"
+        intent.putExtra(
+            Intent.EXTRA_TEXT, """
+     Hi,
+     Inviting you to join ${getString(R.string.app_name)} an interesting app which provides you incredible offer, Refer and earn.
+     
+     Use my referrer code:
+     
+     ${sp.getUser()?.result?.username}
+     
+     Download app from link:
+     https://play.google.com/store/apps/details?id=$packageName&referrer=${sp.getUser()?.result?.username}
+     """.trimIndent()
+        )
+        startActivity(intent)
+    }
+
+
 }

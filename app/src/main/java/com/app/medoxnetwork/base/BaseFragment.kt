@@ -7,13 +7,9 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.KeyEvent
-
 import androidx.fragment.app.Fragment
-
 import com.app.medoxnetwork.R
-
 import com.app.medoxnetwork.session.SesssionManager
-
 import javax.inject.Inject
 
 
@@ -72,11 +68,15 @@ open class BaseFragment : Fragment() {
 
     fun loadingProgress(isLoding:Boolean)
     {
-        if(isLoding) {
-            showDialogs(requireActivity())
-        } else {
-            dismiss()
+        val activity: Activity? = activity
+        if(activity != null){
+            if(isLoding) {
+                showDialogs(requireActivity())
+            } else {
+                dismiss()
+            }
         }
+
     }
 
 

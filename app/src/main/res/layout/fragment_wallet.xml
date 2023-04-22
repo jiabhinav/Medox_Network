@@ -1,470 +1,515 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.home.Wallet">
+    android:id="@+id/swiprefresh">
+    <RelativeLayout
 
-    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/home_bg"
-        android:orientation="vertical"
-        android:paddingTop="@dimen/_15sdp"
-        android:paddingStart="@dimen/_15sdp"
-        android:id="@+id/lltop"
-        android:paddingEnd="@dimen/_15sdp">
+        android:layout_height="match_parent"
+
+        tools:context=".ui.home.Wallet">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:background="@drawable/home_bg"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/_15sdp"
+            android:paddingStart="@dimen/_15sdp"
+            android:id="@+id/lltop"
+            android:paddingEnd="@dimen/_15sdp">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight=".5"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/_12sdp"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:id="@+id/mystaking"
-                    tools:text="0.0 BFIC"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/_9sdp"
-                    android:textColor="@color/white"
-                    android:text="BFIC Available"/>
+                    android:layout_weight=".5"
+                    android:visibility="invisible"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/_12sdp"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:id="@+id/mystaking"
+                        tools:text="0.0 BFIC"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/_9sdp"
+                        android:textColor="@color/white"
+                        android:text="BFIC Available"/>
 
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/_12sdp"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:id="@+id/myteam"
-                    android:layout_marginTop="@dimen/_15sdp"
-                    tools:text="$42.52"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/_9sdp"
-                    android:textColor="@color/white"
-                    android:text="BFIC Price"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/_12sdp"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:id="@+id/myteam"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        tools:text="$42.52"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/_9sdp"
+                        android:textColor="@color/white"
+                        android:text="BFIC Price"/>
 
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_6sdp"
+                        android:adjustViewBounds="true"
+                        app:tint="@color/white"
+                        android:src="@drawable/ic_baseline_wallet_24"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:gravity="end"
+                    android:visibility="invisible"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/_12sdp"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:id="@+id/stackingrewards"
+                        tools:text="0.00 BLV"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/_9sdp"
+                        android:textColor="@color/white"
+                        android:text="BLV Available"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/_12sdp"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:id="@+id/teamrewards"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        tools:text="$42.52"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/_9sdp"
+                        android:textColor="@color/white"
+                        android:text="BLV Price"/>
+
+                </LinearLayout>
 
             </LinearLayout>
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/llgloblestate"
+                android:visibility="gone">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/_14sdp"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:text="Global State"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/_12sdp"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:id="@+id/totalparticipate"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/_12sdp"
+                        tools:text="10,790,842"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/_9sdp"
+                        android:textColor="@color/white"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:text="Total Participants"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/_12sdp"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:id="@+id/countries"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/_12sdp"
+                        tools:text="205"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/_9sdp"
+                        android:textColor="@color/white"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:text="Countries"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_6sdp"
+                        android:background="@drawable/homerow_bg"
+                        android:orientation="horizontal">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".5"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/_12sdp"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                android:id="@+id/totalstackpool"
+                                tools:text="434,34,23423,3"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/_9sdp"
+                                android:textColor="@color/white"
+                                android:layout_marginTop="@dimen/_2sdp"
+                                android:text="Total Stacked in Pool"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".5"
+                            android:gravity="end"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/_12sdp"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                android:id="@+id/totalstackedpoolusd"
+                                tools:text="$4343,3434,00"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/_9sdp"
+                                android:textColor="@color/white"
+                                android:layout_marginTop="@dimen/_2sdp"
+                                android:text="Total Statcked in Pool (USD)"/>
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_6sdp"
+                        android:orientation="horizontal">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".5"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/_12sdp"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                android:id="@+id/globetotalrewards"
+                                tools:text="2,232,323,99"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/_9sdp"
+                                android:textColor="@color/white"
+                                android:layout_marginTop="@dimen/_2sdp"
+                                android:text="Total Rewards"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".5"
+                            android:gravity="end"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/_12sdp"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                android:id="@+id/totalrewardsusd"
+                                tools:text="$34,232,00"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/_9sdp"
+                                android:textColor="@color/white"
+                                android:layout_marginTop="@dimen/_2sdp"
+                                android:text="Total Rewards (USD)"/>
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_6sdp"
+                        android:background="@drawable/homerow_bg"
+                        android:orientation="horizontal">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".5"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/_12sdp"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                android:id="@+id/totalwithdraws"
+                                tools:text="1,90,32,32,00"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/_9sdp"
+                                android:textColor="@color/white"
+                                android:layout_marginTop="@dimen/_2sdp"
+                                android:text="Total Withdraws"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".5"
+                            android:gravity="end"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/_12sdp"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                android:id="@+id/totalwithdrawusd"
+                                tools:text="205"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/_9sdp"
+                                android:textColor="@color/white"
+                                android:layout_marginTop="@dimen/_2sdp"
+                                android:text="Total Withdraws (USD)"/>
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                app:tint="@color/white"
+                android:id="@+id/dropdown"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/ic_baseline_keyboard_arrow_down_24"/>
+
+        </LinearLayout>
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            app:cardUseCompatPadding="true"
+            app:cardCornerRadius="8dp"
+            android:id="@+id/card1"
+            android:layout_below="@+id/lltop">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_20sdp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black_500"
+                    android:drawablePadding="4dp"
+                    android:textSize="@dimen/_12sdp"
+                    android:id="@+id/funding"
+                    android:drawableLeft="@drawable/icon_usd"
+                    android:text="0.0"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/black_500"
+                    android:textSize="@dimen/_12sdp"
+                    android:text="@string/funding_wallet"/>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
+            app:cardUseCompatPadding="true"
+            app:cardCornerRadius="8dp"
+            android:id="@+id/card2"
+            android:layout_below="@+id/card1">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_20sdp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black_500"
+                    android:textSize="@dimen/_12sdp"
+                    android:drawablePadding="4dp"
+                    android:id="@+id/bonus"
+                    android:drawableLeft="@drawable/logo24dp"
+                    android:text="0.0"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/black_500"
+                    android:textSize="@dimen/_12sdp"
+                    android:text="@string/bonus_wallet"/>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
+            app:cardUseCompatPadding="true"
+            app:cardCornerRadius="8dp"
+            android:id="@+id/card3"
+            android:layout_below="@+id/card2">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_20sdp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black_500"
+                    android:textSize="@dimen/_12sdp"
+                    android:drawablePadding="4dp"
+                    android:id="@+id/reward"
+                    android:drawableLeft="@drawable/ic_baseline_card_giftcard_24"
+                    android:text="0.0"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/black_500"
+                    android:textSize="@dimen/_12sdp"
+                    android:text="@string/reward_wallet"/>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
+            android:visibility="gone"
+            android:layout_alignParentBottom="true">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight=".5"
-                android:layout_gravity="center"
-                android:orientation="vertical">
+                android:gravity="center"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:background="@drawable/round_button_wallet"
+                >
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/_6sdp"
+                    android:layout_width="18dp"
                     android:adjustViewBounds="true"
-                    app:tint="@color/white"
-                    android:src="@drawable/ic_baseline_wallet_24"/>
-            </LinearLayout>
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_withdraw"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/_10sdp"
+                    android:paddingBottom="@dimen/_10sdp"
+                    android:paddingStart="5dp"
+                    android:paddingRight="5dp"
+                    android:textColor="@color/purple_200"
+                    android:text="Withdraw"/>
 
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/purple_200"
                 android:layout_weight=".5"
-                android:gravity="end"
-                android:orientation="vertical">
-
+                android:gravity="center"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:background="@drawable/round_button_wallet"
+                >
+                <ImageView
+                    android:layout_width="18dp"
+                    android:adjustViewBounds="true"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ic_deposit"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/_12sdp"
+                    android:paddingTop="@dimen/_10sdp"
+                    android:paddingBottom="@dimen/_10sdp"
+                    android:paddingStart="5dp"
+                    android:paddingRight="5dp"
                     android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:id="@+id/stackingrewards"
-                    tools:text="0.00 BLV"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/_9sdp"
-                    android:textColor="@color/white"
-                    android:text="BLV Available"/>
-
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/_12sdp"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:id="@+id/teamrewards"
-                    android:layout_marginTop="@dimen/_15sdp"
-                    tools:text="$42.52"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/_9sdp"
-                    android:textColor="@color/white"
-                    android:text="BLV Price"/>
+                    android:text="Withdraw"/>
 
             </LinearLayout>
-
         </LinearLayout>
 
-        <androidx.core.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/llgloblestate"
-            android:visibility="gone">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/_14sdp"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="@dimen/_15sdp"
-                    android:text="Global State"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/_12sdp"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:id="@+id/totalparticipate"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="@dimen/_12sdp"
-                    tools:text="10,790,842"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/_9sdp"
-                    android:textColor="@color/white"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="@dimen/_2sdp"
-                    android:text="Total Participants"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/_12sdp"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:id="@+id/countries"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="@dimen/_12sdp"
-                    tools:text="205"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/_9sdp"
-                    android:textColor="@color/white"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="@dimen/_2sdp"
-                    android:text="Countries"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/_6sdp"
-                    android:background="@drawable/homerow_bg"
-                    android:orientation="horizontal">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".5"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="@dimen/_12sdp"
-                            android:textColor="@color/white"
-                            android:textStyle="bold"
-                            android:id="@+id/totalstackpool"
-                            tools:text="434,34,23423,3"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="@dimen/_9sdp"
-                            android:textColor="@color/white"
-                            android:layout_marginTop="@dimen/_2sdp"
-                            android:text="Total Stacked in Pool"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".5"
-                        android:gravity="end"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="@dimen/_12sdp"
-                            android:textColor="@color/white"
-                            android:textStyle="bold"
-                            android:id="@+id/totalstackedpoolusd"
-                            tools:text="$4343,3434,00"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="@dimen/_9sdp"
-                            android:textColor="@color/white"
-                            android:layout_marginTop="@dimen/_2sdp"
-                            android:text="Total Statcked in Pool (USD)"/>
-                    </LinearLayout>
 
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/_6sdp"
-                    android:orientation="horizontal">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".5"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="@dimen/_12sdp"
-                            android:textColor="@color/white"
-                            android:textStyle="bold"
-                            android:id="@+id/globetotalrewards"
-                            tools:text="2,232,323,99"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="@dimen/_9sdp"
-                            android:textColor="@color/white"
-                            android:layout_marginTop="@dimen/_2sdp"
-                            android:text="Total Rewards"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".5"
-                        android:gravity="end"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="@dimen/_12sdp"
-                            android:textColor="@color/white"
-                            android:textStyle="bold"
-                            android:id="@+id/totalrewardsusd"
-                            tools:text="$34,232,00"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="@dimen/_9sdp"
-                            android:textColor="@color/white"
-                            android:layout_marginTop="@dimen/_2sdp"
-                            android:text="Total Rewards (USD)"/>
-                    </LinearLayout>
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/_6sdp"
-                    android:background="@drawable/homerow_bg"
-                    android:orientation="horizontal">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".5"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="@dimen/_12sdp"
-                            android:textColor="@color/white"
-                            android:textStyle="bold"
-                            android:id="@+id/totalwithdraws"
-                            tools:text="1,90,32,32,00"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="@dimen/_9sdp"
-                            android:textColor="@color/white"
-                            android:layout_marginTop="@dimen/_2sdp"
-                            android:text="Total Withdraws"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".5"
-                        android:gravity="end"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="@dimen/_12sdp"
-                            android:textColor="@color/white"
-                            android:textStyle="bold"
-                            android:id="@+id/totalwithdrawusd"
-                            tools:text="205"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="@dimen/_9sdp"
-                            android:textColor="@color/white"
-                            android:layout_marginTop="@dimen/_2sdp"
-                            android:text="Total Withdraws (USD)"/>
-                    </LinearLayout>
-
-
-                </LinearLayout>
-            </LinearLayout>
-        </androidx.core.widget.NestedScrollView>
-
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            app:tint="@color/white"
-            android:id="@+id/dropdown"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/ic_baseline_keyboard_arrow_down_24"/>
-
-    </LinearLayout>
-
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:layout_marginLeft="@dimen/_10sdp"
-        android:layout_marginRight="@dimen/_10sdp"
-        android:layout_marginBottom="@dimen/_10sdp"
-        app:cardUseCompatPadding="true"
-        app:cardCornerRadius="8dp"
-        android:id="@+id/card1"
-        android:layout_below="@+id/lltop">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/_20sdp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black_500"
-                android:drawablePadding="4dp"
-                android:textSize="@dimen/_12sdp"
-                android:drawableLeft="@drawable/icon_usd"
-                android:text="0.0"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:textColor="@color/black_500"
-                android:textSize="@dimen/_12sdp"
-                android:text="USD"/>
-        </RelativeLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_10sdp"
-        app:cardUseCompatPadding="true"
-        app:cardCornerRadius="8dp"
-        android:layout_below="@+id/card1">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/_20sdp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black_500"
-                android:textSize="@dimen/_12sdp"
-                android:drawablePadding="4dp"
-                android:drawableLeft="@drawable/logo24dp"
-                android:text="0.0"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:textColor="@color/black_500"
-                android:textSize="@dimen/_12sdp"
-                android:text="MNT"/>
-        </RelativeLayout>
-    </androidx.cardview.widget.CardView>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_10sdp"
-        android:layout_alignParentBottom="true">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight=".5"
-            android:gravity="center"
-            android:layout_marginRight="@dimen/_5sdp"
-            android:background="@drawable/round_button_wallet"
-            >
-            <ImageView
-                android:layout_width="18dp"
-                android:adjustViewBounds="true"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/ic_withdraw"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="@dimen/_10sdp"
-                android:paddingBottom="@dimen/_10sdp"
-                android:paddingStart="5dp"
-                android:paddingRight="5dp"
-                android:textColor="@color/purple_200"
-                android:text="Withdraw"/>
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/purple_200"
-            android:layout_weight=".5"
-            android:gravity="center"
-            android:layout_marginLeft="@dimen/_5sdp"
-            android:background="@drawable/round_button_wallet"
-            >
-            <ImageView
-                android:layout_width="18dp"
-                android:adjustViewBounds="true"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/ic_deposit"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="@dimen/_10sdp"
-                android:paddingBottom="@dimen/_10sdp"
-                android:paddingStart="5dp"
-                android:paddingRight="5dp"
-                android:textColor="@color/white"
-                android:text="Withdraw"/>
-
-        </LinearLayout>
-    </LinearLayout>
-
-
-
-</RelativeLayout>
+    </RelativeLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

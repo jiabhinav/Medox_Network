@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_4sdp"
+    android:paddingStart="@dimen/_8sdp"
+    android:paddingEnd="@dimen/_8sdp"
+    android:paddingTop="@dimen/_4sdp"
+    android:paddingBottom="@dimen/_4sdp"
+
+
+    android:background="@drawable/cornor_radius1">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/date"
+            android:padding="4dp"
+            android:layout_alignParentRight="true"
+            android:textSize="@dimen/_10sdp"
+            android:text="2023-04-17 00:00:00"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Amount"
+            android:layout_below="@+id/date"
+            android:textColor="@color/black_500"
+            android:id="@+id/textamount"
+            android:textSize="@dimen/_12sdp"
+           android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/purple_200"
+            android:drawablePadding="4dp"
+            android:textSize="@dimen/_14sdp"
+            android:layout_marginTop="4dp"
+           android:layout_below="@+id/textamount"
+            android:drawableTint="@color/purple_200"
+            android:drawableLeft="@drawable/ic_baseline_wallet_24"
+            android:id="@+id/amount"
+            android:text="0.0"/>
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="@dimen/_28sdp"
+            android:layout_below="@+id/date"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_centerHorizontal="true"
+            android:background="@color/purple_200"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wallet Balance"
+            android:layout_below="@+id/date"
+            android:textColor="@color/black_500"
+            android:id="@+id/textwallet"
+            android:layout_alignParentEnd="true"
+            android:textSize="@dimen/_12sdp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/purple_200"
+            android:drawableLeft="@drawable/ic_baseline_wallet_24"
+            android:drawableTint="@color/purple_200"
+            android:drawablePadding="4dp"
+            android:textSize="@dimen/_14sdp"
+            android:id="@+id/walletbalance"
+            android:layout_below="@+id/textwallet"
+            android:layout_alignParentEnd="true"
+            android:text="0.00"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/_10sdp"
+            android:id="@+id/remark"
+            android:padding="4dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/amount"
+            android:text="Received 200 Bonus MNT Token"/>
+
+</RelativeLayout>

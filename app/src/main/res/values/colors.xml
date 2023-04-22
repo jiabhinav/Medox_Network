@@ -7,6 +7,7 @@
     <color name="teal_700">#F3CD95</color>
     <color name="black">#FF000000</color>
     <color name="black_500">#333030</color>
+    <color name="black_200">#777575</color>
     <color name="white">#FFFFFFFF</color>
     <color name="darkpurple">#E18905</color>
     <color name="edit_round_border">#888888</color>

@@ -16,6 +16,24 @@
         android:name="com.app.medoxnetwork.ui.home.Wallet"
         android:label="Your Wallet"
         tools:layout="@layout/fragment_wallet" />
+    <fragment
+        android:id="@+id/nav_wallet_history"
+        android:name="com.app.medoxnetwork.ui.home.WalletHistory"
+        android:label="Wallet History"
+        tools:layout="@layout/fragment_wallet_history" />
+
+    <fragment
+        android:id="@+id/nav_team"
+        android:name="com.app.medoxnetwork.ui.home.Team"
+        android:label="Team"
+        tools:layout="@layout/fragment_team" />
+
+    <fragment
+        android:id="@+id/nav_statistics"
+        android:name="com.app.medoxnetwork.ui.home.Statistics"
+        android:label="Statistics"
+        tools:layout="@layout/fragment_statistics" />
+
     <dialog
         android:id="@+id/nav_logout"
         android:name="com.app.medoxnetwork.ui.home.Logout"

@@ -4,6 +4,7 @@ package com.app.medoxnetwork.auth
 import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.os.RemoteException
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -12,6 +13,9 @@ import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.fragment.app.viewModels
+import com.android.installreferrer.api.InstallReferrerClient
+import com.android.installreferrer.api.InstallReferrerStateListener
+import com.android.installreferrer.api.ReferrerDetails
 import com.app.medoxnetwork.R
 import com.app.medoxnetwork.base.BaseActivity
 import com.app.medoxnetwork.databinding.AlertOtpBinding
@@ -33,14 +37,15 @@ import org.json.JSONObject
 
 
 @AndroidEntryPoint
-class Register : BaseActivity(),View.OnClickListener{
+class Register : BaseActivity(),View.OnClickListener,InstallReferrerStateListener  {
 
     var countDownTimer: CountDownTimer? = null
     lateinit var binding: RegisterActivityBinding
     private lateinit var mBottomSheetDialog: BottomSheetDialog
     lateinit var alertbinding: AlertOtpBinding
-
     var otp = 0
+    private lateinit var mReferrerClient: InstallReferrerClient
+
     private val viewModel: RegisterViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -270,6 +275,39 @@ class Register : BaseActivity(),View.OnClickListener{
     override fun onClick(p0: View?) {
 
     }
+
+    override fun onInstallReferrerSetupFinished(p0: Int) {
+        when (p0) {
+            InstallReferrerClient.InstallReferrerResponse.OK -> try {
+                // Log.v(TAG, "InstallReferrer conneceted");
+                val response: ReferrerDetails = mReferrerClient.getInstallReferrer()
+                //handleReferrer(response);
+                response.installReferrer
+                response.referrerClickTimestampSeconds
+                response.installBeginTimestampSeconds
+                // Toast.makeText(this, "link id is "+ response.getInstallReferrer(), Toast.LENGTH_SHORT).show();
+                if (response.installReferrer != "utm_source=google-play&utm_medium=organic") {
+                    binding.referralcode.setText(response.installReferrer)
+                } else {
+                    binding.referralcode.setText("")
+                }
+                mReferrerClient.endConnection()
+            } catch (e: RemoteException) {
+                e.printStackTrace()
+            }
+            InstallReferrerClient.InstallReferrerResponse.FEATURE_NOT_SUPPORTED ->                 // Log.w(TAG, "InstallReferrer not supported");
+                Toast.makeText(this, "InstallReferrer not supported", Toast.LENGTH_SHORT).show()
+            InstallReferrerClient.InstallReferrerResponse.SERVICE_UNAVAILABLE ->                 //  Log.w(TAG, "Unable to connect to the service");
+                Toast.makeText(this, "Unable to connect to the service", Toast.LENGTH_SHORT).show()
+            else ->                 //  Log.w(TAG, "responseCode not found.");
+                Toast.makeText(this, "responseCode not found.", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    override fun onInstallReferrerServiceDisconnected() {
+
+    }
+
 
 
 }
