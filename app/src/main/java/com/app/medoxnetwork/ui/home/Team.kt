@@ -49,7 +49,7 @@ class Team : BaseFragment() {
 
             val bundle=Bundle()
             bundle.putInt("type",2)
-            findNavController().navigate(R.id.nav_wallet_history,bundle)
+           // findNavController().navigate(R.id.nav_wallet_history,bundle)
         }
 
         binding.referral.setOnClickListener{
