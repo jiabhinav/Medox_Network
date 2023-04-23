@@ -47,7 +47,7 @@
                         android:textColor="@color/black_200"
                         android:textSize="@dimen/_12sdp"
                         android:textStyle="bold"
-                        android:text="0 BLV"/>
+                        android:text="0 MNT"/>
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
@@ -82,7 +82,7 @@
                         android:textColor="@color/black_200"
                         android:textSize="@dimen/_12sdp"
                         android:textStyle="bold"
-                        android:text="0 BLV"/>
+                        android:text="0 MNT"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -125,7 +125,7 @@
                         android:textColor="@color/black_200"
                         android:textSize="@dimen/_12sdp"
                         android:textStyle="bold"
-                        android:text="0 BLV"/>
+                        android:text="0 MNT"/>
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
@@ -173,7 +173,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
-                            android:text="0 BLV"
+                            android:text="0 MNT"
                             android:textColor="@color/black_200"
                             android:textSize="@dimen/_12sdp"
                             android:textStyle="bold" />

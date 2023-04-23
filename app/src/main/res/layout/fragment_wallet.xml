@@ -97,13 +97,13 @@
                         android:textColor="@color/white"
                         android:textStyle="bold"
                         android:id="@+id/stackingrewards"
-                        tools:text="0.00 BLV"/>
+                        tools:text="0.00 MNT"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/_9sdp"
                         android:textColor="@color/white"
-                        android:text="BLV Available"/>
+                        android:text="MNT Available"/>
 
 
                     <TextView
@@ -120,7 +120,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/_9sdp"
                         android:textColor="@color/white"
-                        android:text="BLV Price"/>
+                        android:text="MNT Price"/>
 
                 </LinearLayout>
 

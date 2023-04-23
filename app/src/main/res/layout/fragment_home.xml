@@ -38,7 +38,7 @@
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:id="@+id/mystaking"
-                tools:text="0 BLV"/>
+                tools:text="0 MNT"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -72,7 +72,7 @@
                 android:textStyle="bold"
                 android:id="@+id/directrewards"
                 android:layout_marginTop="@dimen/_15sdp"
-                tools:text="0.00 BLV"/>
+                tools:text="0.00 MNT"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -109,7 +109,7 @@
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:id="@+id/stackingrewards"
-                tools:text="0.00 BLV"/>
+                tools:text="0.00 MNT"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -126,7 +126,7 @@
                 android:textStyle="bold"
                 android:id="@+id/teamrewards"
                 android:layout_marginTop="@dimen/_15sdp"
-                tools:text="0.00 BLV"/>
+                tools:text="0.00 MNT"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -142,7 +142,7 @@
                 android:textStyle="bold"
                 android:layout_marginTop="@dimen/_15sdp"
                 android:id="@+id/totalrewards"
-                tools:text="0.00 BLV"/>
+                tools:text="0.00 MNT"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

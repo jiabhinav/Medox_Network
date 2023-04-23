@@ -28,4 +28,11 @@
     <string name="contecttosupport">Contact to support</string>
     <string name="team_levels">Team Levels</string>
     <string name="total_team_members">Total Team Members</string>
+    <string name="changepassword">Change Password</string>
+    <string name="myprofile">My Profile</string>
+    <string name="statistics">Statistics</string>
+    <string name="team">Team</string>
+    <string name="wallethistory">Wallet History</string>
+    <string name="yourwallet">Your Wallet</string>
+    <string name="logout">Logout</string>
 </resources>

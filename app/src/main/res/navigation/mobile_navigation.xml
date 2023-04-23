@@ -14,30 +14,42 @@
     <fragment
         android:id="@+id/nav_wallet"
         android:name="com.app.medoxnetwork.ui.home.Wallet"
-        android:label="Your Wallet"
+        android:label="@string/yourwallet"
         tools:layout="@layout/fragment_wallet" />
     <fragment
         android:id="@+id/nav_wallet_history"
         android:name="com.app.medoxnetwork.ui.home.WalletHistory"
-        android:label="Wallet History"
+        android:label="@string/wallethistory"
         tools:layout="@layout/fragment_wallet_history" />
 
     <fragment
         android:id="@+id/nav_team"
         android:name="com.app.medoxnetwork.ui.home.Team"
-        android:label="Team"
+        android:label="@string/team"
         tools:layout="@layout/fragment_team" />
 
     <fragment
         android:id="@+id/nav_statistics"
         android:name="com.app.medoxnetwork.ui.home.Statistics"
-        android:label="Statistics"
+        android:label="@string/statistics"
         tools:layout="@layout/fragment_statistics" />
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.app.medoxnetwork.ui.home.Profile"
+        android:label="@string/myprofile"
+        tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/nav_changepassword"
+        android:name="com.app.medoxnetwork.ui.home.ChangePassword"
+        android:label="@string/changepassword"
+        tools:layout="@layout/fragment_change_password" />
+
 
     <dialog
         android:id="@+id/nav_logout"
         android:name="com.app.medoxnetwork.ui.home.Logout"
-        android:label="Logout"
+        android:label="@string/logout"
         tools:layout="@layout/fragment_logout" />
 
 </navigation>
