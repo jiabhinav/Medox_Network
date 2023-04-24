@@ -19,7 +19,8 @@ data class ModelDashboard(
         val total_staked_in_pool: Int,
         val total_staked_in_pool_usd: Int,
         val total_withdraw: Int,
-        val total_withdraw_usd: Int
+        val total_withdraw_usd: Int,
+         val live_rate: Double
 
     )
 }

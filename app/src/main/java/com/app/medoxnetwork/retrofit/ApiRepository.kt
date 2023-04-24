@@ -24,6 +24,8 @@ import javax.inject.Inject
 
     suspend fun android_wallet_details(bodyParams: LinkedHashMap<String, String>) = apiServices.android_wallet_details(bodyParams)
 
+    suspend fun android_team(bodyParams: LinkedHashMap<String, String>) = apiServices.android_team(bodyParams)
+
 
 
 

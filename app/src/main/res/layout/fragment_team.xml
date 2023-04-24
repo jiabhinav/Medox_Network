@@ -59,7 +59,7 @@
                     android:textSize="@dimen/_12sdp"
                     android:id="@+id/name"
                     android:layout_below="@+id/view"
-                    android:text="Sekh Hossain"/>
+                    tools:text="Sekh Hossain"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -71,7 +71,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="10dp"
                     android:drawableLeft="@drawable/ic_baseline_contact_phone_24"
-                    android:text="+919939282323"/>
+                    tools:text="+919939282323"/>
                 <TextView
 
                     android:layout_width="wrap_content"
@@ -81,7 +81,8 @@
                     android:textSize="@dimen/_12sdp"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
-                    android:text="F3Wkit"
+                    tools:text="F3Wkit"
+                    android:id="@+id/username"
                     android:layout_below="@+id/view"/>
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
@@ -110,6 +111,7 @@
                     android:textColor="@color/white"
                     android:paddingTop="@dimen/_2sdp"
                     android:textStyle="bold"
+                    android:id="@+id/totalmember"
                     android:text="0"/>
                 <TextView
                     android:layout_width="wrap_content"

@@ -18,6 +18,7 @@ import com.app.medoxnetwork.databinding.FragmentTeamBinding
 import com.app.medoxnetwork.databinding.FragmentWalletBinding
 import com.app.medoxnetwork.utils.Utility
 import com.app.medoxnetwork.viewmodel.HomeViewModel
+import com.app.medoxnetwork.viewmodel.StatisticsViewModel
 import com.app.medoxnetwork.viewmodel.TeamViewModel
 import com.app.medoxnetwork.viewmodel.WalletViewModel
 import com.google.gson.Gson
@@ -27,7 +28,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class Statistics : BaseFragment() {
 
     lateinit var binding:FragmentStatisticsBinding
-    private val viewModel: TeamViewModel by viewModels()
+    private val viewModel: StatisticsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,11 +67,11 @@ class Statistics : BaseFragment() {
     {
         val params = LinkedHashMap<String, String>()
         params.put("username", sp.getUser()!!.result.username)
-        viewModel.android_user_wallet(params)
+        viewModel.android_team(params)
     }
 
     fun observeData() {
-        viewModel.userwallet.observe(requireActivity()) {
+        viewModel.userTeam.observe(requireActivity()) {
             Log.d("TAG", "observeData: " + Gson().toJson(it))
             if(it.status==1)
             {

@@ -68,14 +68,22 @@ class Team : BaseFragment() {
     {
         val params = LinkedHashMap<String, String>()
         params.put("username", sp.getUser()!!.result.username)
-        viewModel.android_user_wallet(params)
+        viewModel.android_team(params)
     }
 
     fun observeData() {
-        viewModel.userwallet.observe(requireActivity()) {
+        viewModel.userTeam.observe(requireActivity()) {
             Log.d("TAG", "observeData: " + Gson().toJson(it))
             if(it.status==1)
             {
+                binding.name.text=it.result.Sponsor_name
+                binding.mobile.text=it.result.sponsor_phone
+
+                binding.username.text=it.result.sponsor_username
+
+                binding.totalmember.text=it.result.total_downline.toString()
+                binding.directmemeber.text=it.result.direct_downline.toString()
+
 
             }
             else

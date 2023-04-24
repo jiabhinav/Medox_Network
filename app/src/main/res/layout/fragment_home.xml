@@ -18,7 +18,7 @@
     android:layout_height="wrap_content"
     android:background="@drawable/home_bg"
     android:orientation="vertical"
-    android:paddingTop="@dimen/_15sdp"
+    android:paddingTop="@dimen/_10sdp"
     android:paddingStart="@dimen/_15sdp"
     android:paddingEnd="@dimen/_15sdp">
 
@@ -163,6 +163,18 @@
                android:layout_height="wrap_content"
 
                android:orientation="vertical">
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:textSize="@dimen/_14sdp"
+                   android:textColor="@color/white"
+                   android:textStyle="bold|italic"
+                   android:layout_gravity="center_horizontal"
+                   android:id="@+id/liverate"
+                   android:text=""/>
+
+
                <TextView
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
@@ -170,7 +182,7 @@
                    android:textColor="@color/white"
                    android:textStyle="bold"
                    android:layout_gravity="center_horizontal"
-                   android:layout_marginTop="@dimen/_15sdp"
+                   android:layout_marginTop="@dimen/_10sdp"
                    android:text="Global State"/>
 
                <TextView
@@ -181,7 +193,7 @@
                    android:textStyle="bold"
                    android:id="@+id/totalparticipate"
                    android:layout_gravity="center_horizontal"
-                   android:layout_marginTop="@dimen/_12sdp"
+                   android:layout_marginTop="@dimen/_10sdp"
                    tools:text="10,790,842"/>
                <TextView
                    android:layout_width="wrap_content"
@@ -200,7 +212,7 @@
                    android:textStyle="bold"
                    android:id="@+id/countries"
                    android:layout_gravity="center_horizontal"
-                   android:layout_marginTop="@dimen/_12sdp"
+                   android:layout_marginTop="@dimen/_10sdp"
                    tools:text="205"/>
                <TextView
                    android:layout_width="wrap_content"

@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.app.medoxnetwork.R
 import com.app.medoxnetwork.base.BaseFragment
 import com.app.medoxnetwork.databinding.AlertGiftcardBinding
@@ -22,6 +23,8 @@ import com.app.medoxnetwork.utils.Utility.showToast
 import com.app.medoxnetwork.viewmodel.HomeViewModel
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
@@ -88,6 +91,7 @@ class HomeFragment : BaseFragment() {
 
         observeData()
         callAPI()
+
     }
 
     fun callAPI()
@@ -141,6 +145,7 @@ class HomeFragment : BaseFragment() {
 
     fun setDataOnText(model: ModelDashboard.Result)
     {
+        binding!!.liverate.text="1 MNT = ${model.live_rate} USD"
         binding!!.mystaking.text=model.my_staking.toString()
         binding!!.stackingrewards.text=model.staking_reward.toString()
         binding!!.myteam.text=model.my_team.toString()
@@ -174,7 +179,12 @@ class HomeFragment : BaseFragment() {
         customLayout.scratchView.setRevealListener(object : ScratchView.IRevealListener {
             override fun onRevealed(scratchView: ScratchView?) {
                 Toast.makeText(requireContext(), "You won 1 MNT Token", Toast.LENGTH_LONG).show()
-                claimAPI()
+
+                lifecycleScope.launch {
+                    delay(5000)
+                    claimAPI()
+                }
+
             }
 
             override fun onRevealPercentChangedListener(scratchView: ScratchView?, percent: Float) {

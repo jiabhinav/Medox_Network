@@ -43,6 +43,10 @@ interface ApiServices {
     @POST("android-wallet-details")
     suspend  fun android_wallet_details(@FieldMap jsonObject: LinkedHashMap<String, String>): Response<ModelWalletHistory>
 
+    @FormUrlEncoded
+    @POST("android-team")
+    suspend  fun android_team(@FieldMap jsonObject: LinkedHashMap<String, String>): Response<ModelTeam>
+
 
 
 }
