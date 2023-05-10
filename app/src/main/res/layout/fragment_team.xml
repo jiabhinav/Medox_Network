@@ -207,6 +207,7 @@
                 android:foreground="?android:selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:focusable="true"
+                android:id="@+id/llteamlevel"
                 android:background="@drawable/round_button_wallet"
                 >
                 <ImageView

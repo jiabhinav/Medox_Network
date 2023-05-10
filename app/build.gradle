@@ -26,8 +26,8 @@ android {
         applicationId "com.app.medoxnetwork"
         minSdk 23
         targetSdk 33
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -47,8 +47,13 @@ android {
             buildConfigField "String", "IMAGE_BASE_URL", "\"https://stltoken.co/medox/public/profile-image/\""
             buildConfigField "String", "BASE_URL", "\"https://stltoken.co/medox/\""
             buildConfigField "String", "SESSION", "\"medox\""
-            debuggable true
+            debuggable false
 
+        }
+
+        applicationVariants.all { variant ->
+            variant.outputs.all { output -> outputFileName = new File("medox_" + variant.versionName + ".apk")
+            }
         }
     }
     compileOptions {

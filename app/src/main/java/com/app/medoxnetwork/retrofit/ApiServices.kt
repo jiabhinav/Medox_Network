@@ -69,6 +69,11 @@ interface ApiServices {
     @POST("android-support")
     suspend  fun  android_support(@FieldMap jsonObject: LinkedHashMap<String, String>): Response<ModelSuccess>
 
+    @FormUrlEncoded
+    @POST("android-change-password")
+    suspend  fun  android_change_password(@FieldMap jsonObject: LinkedHashMap<String, String>): Response<ModelSuccess>
+
+
 
 
 

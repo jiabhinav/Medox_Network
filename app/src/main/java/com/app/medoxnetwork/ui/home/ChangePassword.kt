@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.app.medoxnetwork.base.BaseFragment
 import com.app.medoxnetwork.databinding.FragmentChangePasswordBinding
 import com.app.medoxnetwork.model.ModelUser
@@ -56,15 +57,14 @@ class ChangePassword : BaseFragment() {
 
     fun  checkVaidation() {
         if (binding.oldpaswword.getText().toString() == "") {
-            showToast("Enter Old password",2)
+            showToast("Enter current password",2)
         } else if (binding.newpassword.getText().toString() == "") {
             showToast("Enter new password",2)
         } else if (binding.confirmpassword.getText().toString() == "") {
-            showToast("confirm password",2)
+            showToast("confirm password is empty",2)
         } else if (binding.confirmpassword.text.toString() != binding.newpassword.text.toString()) {
-            showToast("Confirm password dose not match",2)
+            showToast("Confirm password dose not match to current password",2)
         } else {
-
             if(isOnline(requireContext()))
             {
                 callAPI()
@@ -79,31 +79,31 @@ class ChangePassword : BaseFragment() {
     fun callAPI()
     {
 
-        val map= HashMap<String,String>()
+        val map= LinkedHashMap<String,String>()
         map["username"]=model?.username!!
-        map["old"]=binding.oldpaswword.text.toString()
-        map["new_password"]=binding.newpassword.text.toString()
-      //  viewmodel.changePassword(map)
+        map["current"]=binding.oldpaswword.text.toString()
+        map["new"]=binding.newpassword.text.toString()
+        map["confirm"]=binding.confirmpassword.text.toString()
+        viewmodel.android_change_password(map)
     }
 
 
 
     fun observeUser()
     {
-       /* viewmodel.listpassword.observe(requireActivity(),{
-            Log.d("TAG", "observeUser12414: "+ Gson().toJson(it))
-            if (it.status==200)
+        viewmodel.passwordSuccess.observe(requireActivity(),{
+            if (it.status==1)
             {
-                showToast(it.message, 2)
+                showToast(it.result.msg, 2)
                 findNavController().navigateUp()
 
             }
             else
             {
-                showToast(it.message, 2)
+                showToast(it.result.msg, 2)
             }
 
-        })*/
+        })
 
         viewmodel.loading.observe(requireActivity(),{
 

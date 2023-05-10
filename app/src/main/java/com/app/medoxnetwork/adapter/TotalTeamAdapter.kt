@@ -39,7 +39,7 @@ class TotalTeamAdapter(
                 itemview.name.text=item.name
                 itemview.username.text=item.username
                 itemview.refrence.text=item.reference
-                itemview.staking.text=item.staking.toString()
+                itemview.staking.text="$"+item.staking.toString()
                 holder.binding.llview.addView(itemview.root)
             }
         }

@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/dark_gray2"
             android:layout_marginLeft="@dimen/_5sdp"
-            android:text="OTP will be sent on your registered email address"/>
+            android:text="OTP has been sent to your registered email address"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -81,7 +81,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/_15sdp"
             android:layout_marginTop="@dimen/_10sdp"
-            android:visibility="invisible"
+            android:visibility="visible"
             android:id="@+id/llotp"
             android:layout_marginLeft="@dimen/_15sdp"
             android:orientation="vertical">

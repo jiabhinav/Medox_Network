@@ -26,6 +26,8 @@ class ProfileViewModel @Inject constructor(
 
     val supportSuccess = MutableLiveData<ModelSuccess>()
 
+    val passwordSuccess = MutableLiveData<ModelSuccess>()
+
     val error: MutableLiveData<String> = MutableLiveData()
     val loading = MutableLiveData<Boolean>()
 
@@ -112,6 +114,36 @@ class ProfileViewModel @Inject constructor(
         }
 
     }
+
+    fun android_change_password(jsonObject: LinkedHashMap<String, String>)
+    {
+        viewModelScope.launch {
+            loading.postValue(true)
+            try {
+                apiRepository.android_change_password(jsonObject).let {
+                    loading.postValue(false)
+                    if (it.isSuccessful){
+                        passwordSuccess.postValue(it.body())
+                    }else{
+                        val res = getError(it)
+                        val respons=Gson().toJson(res)
+                        Log.d("TAG", "callAPI: "+respons)
+                        error.postValue(respons)
+                    }
+                }
+            }
+            catch (e:Exception)
+            {
+                Log.d("TAG", "registerMember: "+e.message)
+                loading.postValue(false)
+                error.postValue(e.message)
+            }
+
+        }
+
+    }
+
+
 
 
 
