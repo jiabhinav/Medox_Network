@@ -60,6 +60,9 @@ class Team : BaseFragment() {
             binding.swiprefresh.isRefreshing=false
             callAPI()
         }
+        binding.lltotalteam.setOnClickListener{
+            findNavController().navigate(R.id.nav_totalteam)
+        }
         observeData()
         callAPI()
     }

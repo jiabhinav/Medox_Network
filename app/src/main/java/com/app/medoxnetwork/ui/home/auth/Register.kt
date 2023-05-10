@@ -20,6 +20,7 @@ import com.app.medoxnetwork.R
 import com.app.medoxnetwork.base.BaseActivity
 import com.app.medoxnetwork.databinding.AlertOtpBinding
 import com.app.medoxnetwork.databinding.RegisterActivityBinding
+import com.app.medoxnetwork.utils.AppConstant
 
 import com.app.medoxnetwork.utils.Utility.isValidEmail
 import com.app.medoxnetwork.utils.Utility.showToast
@@ -55,6 +56,8 @@ class Register : BaseActivity(),View.OnClickListener,InstallReferrerStateListene
         init()
     }
 
+
+
     fun init()
     {
         observeData()
@@ -67,6 +70,12 @@ class Register : BaseActivity(),View.OnClickListener,InstallReferrerStateListene
             loginsucces.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK)
            startActivity(loginsucces)
         }
+
+        if (binding.referralcode.text.toString().isEmpty())
+        {
+            binding.referralcode.setText(AppConstant.referral)
+        }
+
     }
 
 
@@ -194,7 +203,6 @@ class Register : BaseActivity(),View.OnClickListener,InstallReferrerStateListene
         mBottomSheetDialog = BottomSheetDialog(this, R.style.CustomBottomSheetDialogTheme)
         mBottomSheetDialog.setCancelable(false)
         mBottomSheetDialog.setCanceledOnTouchOutside(false)
-        alertbinding.close.setOnClickListener(this)
         alertbinding.veryotp.setOnClickListener(this)
         alertbinding.resendotp.setOnClickListener(this)
         // alertbinding.veryotp.alpha = .8f
@@ -235,8 +243,9 @@ class Register : BaseActivity(),View.OnClickListener,InstallReferrerStateListene
             checkCredential()
         }
         alertbinding.close.setOnClickListener {
-            dismiss()
+            mBottomSheetDialog.dismiss()
         }
+
 
         if (countDownTimer != null) {
             countDownTimer!!.cancel()
@@ -293,6 +302,7 @@ class Register : BaseActivity(),View.OnClickListener,InstallReferrerStateListene
                 }
                 mReferrerClient.endConnection()
             } catch (e: RemoteException) {
+                Log.d("TAG", "onInstallReferrerSetupFinished: "+e.message)
                 e.printStackTrace()
             }
             InstallReferrerClient.InstallReferrerResponse.FEATURE_NOT_SUPPORTED ->                 // Log.w(TAG, "InstallReferrer not supported");

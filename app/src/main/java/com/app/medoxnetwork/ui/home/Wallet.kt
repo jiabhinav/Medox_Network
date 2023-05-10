@@ -63,6 +63,10 @@ class Wallet : BaseFragment() {
             binding.swiprefresh.isRefreshing=false
             callAPI()
         }
+        binding.lldeposit.setOnClickListener{
+            findNavController().navigate(R.id.nav_deposit)
+        }
+
         observeData()
         callAPI()
     }

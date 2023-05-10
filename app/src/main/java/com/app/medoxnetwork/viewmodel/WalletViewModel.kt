@@ -23,6 +23,9 @@ class WalletViewModel @Inject constructor(
 
      val userwallet = MutableLiveData<ModelWalletList>()
     val walletHistory = MutableLiveData<ModelWalletHistory>()
+    val deposit = MutableLiveData<ModelDepositAddress>()
+
+    val refreshDeposit = MutableLiveData<ModelSuccess>()
 
     val error: MutableLiveData<String> = MutableLiveData()
     val loading = MutableLiveData<Boolean>()
@@ -75,6 +78,63 @@ class WalletViewModel @Inject constructor(
             }
             catch (e:Exception)
             {
+                loading.postValue(false)
+                error.postValue(e.message)
+            }
+
+        }
+
+    }
+
+
+    fun android_deposit_page(jsonObject: LinkedHashMap<String, String>)
+    {
+        viewModelScope.launch {
+            loading.postValue(true)
+            try {
+                apiRepository.android_deposit_page(jsonObject).let {
+                    loading.postValue(false)
+                    if (it.isSuccessful){
+                        deposit.postValue(it.body())
+                    }else{
+                        val res = getError(it)
+                        val respons=Gson().toJson(res)
+                        Log.d("TAG", "callAPI: "+respons)
+                        error.postValue(respons)
+                    }
+                }
+            }
+            catch (e:Exception)
+            {
+                Log.d("TAG", "registerMember: "+e.message)
+                loading.postValue(false)
+                error.postValue(e.message)
+            }
+
+        }
+
+    }
+
+    fun android_refresh_fund(jsonObject: LinkedHashMap<String, String>)
+    {
+        viewModelScope.launch {
+            loading.postValue(true)
+            try {
+                apiRepository.android_refresh_fund(jsonObject).let {
+                    loading.postValue(false)
+                    if (it.isSuccessful){
+                        refreshDeposit.postValue(it.body())
+                    }else{
+                        val res = getError(it)
+                        val respons=Gson().toJson(res)
+                        Log.d("TAG", "callAPI: "+respons)
+                        error.postValue(respons)
+                    }
+                }
+            }
+            catch (e:Exception)
+            {
+                Log.d("TAG", "registerMember: "+e.message)
                 loading.postValue(false)
                 error.postValue(e.message)
             }

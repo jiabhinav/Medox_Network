@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"
+        android:paddingStart="5dp"
+        android:gravity="center_vertical"
+        android:paddingRight="5dp"
+        android:id="@+id/ll"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:id="@+id/name"
+            android:textSize="@dimen/team_list_text"
+            android:text="Abhinav Shukla"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:id="@+id/username"
+            android:textSize="@dimen/team_list_text"
+            android:gravity="center_horizontal"
+            android:text="usernmae"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight=".6"
+            android:id="@+id/refrence"
+            android:textSize="@dimen/team_list_text"
+            android:text="Refreneces"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight=".7"
+            android:id="@+id/staking"
+            android:gravity="end"
+            android:textSize="@dimen/team_list_text"
+            android:text="staking"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/view"
+        android:background="@color/lightgray"
+        android:layout_below="@+id/ll"/>
+
+
+
+</RelativeLayout>

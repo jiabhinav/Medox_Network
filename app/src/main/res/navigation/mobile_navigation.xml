@@ -45,6 +45,30 @@
         android:label="@string/changepassword"
         tools:layout="@layout/fragment_change_password" />
 
+    <fragment
+        android:id="@+id/nav_deposit"
+        android:name="com.app.medoxnetwork.ui.home.DepositQR"
+        android:label="Deposit Address"
+        tools:layout="@layout/fragment_deposit_q_r" />
+
+
+    <fragment
+        android:id="@+id/nav_stake"
+        android:name="com.app.medoxnetwork.ui.home.StakeFragment"
+        android:label="Stake Amount"
+        tools:layout="@layout/fragment_stake" />
+
+    <fragment
+        android:id="@+id/nav_totalteam"
+        android:name="com.app.medoxnetwork.ui.home.TotalTeamFragment"
+        android:label="Team List"
+        tools:layout="@layout/fragment_total_team" />
+
+    <fragment
+        android:id="@+id/nav_support"
+        android:name="com.app.medoxnetwork.ui.home.HelpSupport"
+        android:label="Help/Support"
+        tools:layout="@layout/fragment_help_support" />
 
     <dialog
         android:id="@+id/nav_logout"

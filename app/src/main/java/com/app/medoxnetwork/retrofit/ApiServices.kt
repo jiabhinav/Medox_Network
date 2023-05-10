@@ -47,6 +47,30 @@ interface ApiServices {
     @POST("android-team")
     suspend  fun android_team(@FieldMap jsonObject: LinkedHashMap<String, String>): Response<ModelTeam>
 
+    @FormUrlEncoded
+    @POST("android-deposit-page")
+    suspend  fun  android_deposit_page(@FieldMap jsonObject: LinkedHashMap<String, String>): Response<ModelDepositAddress>
+
+
+    @FormUrlEncoded
+    @POST("android-refresh-fund")
+    suspend  fun  android_refresh_fund(@FieldMap jsonObject: LinkedHashMap<String, String>): Response<ModelSuccess>
+
+    @FormUrlEncoded
+    @POST("android-stake-mnt")
+    suspend  fun android_stake_mnt(@FieldMap jsonObject: LinkedHashMap<String, String>): Response<ModelSuccess>
+
+    @FormUrlEncoded
+    @POST("android-total-team")
+    suspend  fun  android_total_team(@FieldMap jsonObject: LinkedHashMap<String, String>): Response<ModelTotalTeam>
+
+
+    @FormUrlEncoded
+    @POST("android-support")
+    suspend  fun  android_support(@FieldMap jsonObject: LinkedHashMap<String, String>): Response<ModelSuccess>
+
+
+
 
 
 }

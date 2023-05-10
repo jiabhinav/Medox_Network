@@ -4,8 +4,21 @@ plugins {
     id 'kotlin-kapt'
     id("com.google.dagger.hilt.android")
 }
-
 android {
+    signingConfigs {
+        debug {
+            storeFile file('D:\\Abhinav_Docs\\MyApplication3\\storejks.jks')
+            storePassword '123456'
+            keyAlias 'key0'
+            keyPassword '123456'
+        }
+        release {
+            storeFile file('D:\\Abhinav_Docs\\MyApplication3\\storejks.jks')
+            storePassword '123456'
+            keyAlias 'key0'
+            keyPassword '123456'
+             }
+    }
     namespace 'com.app.medoxnetwork'
     compileSdk 33
 
@@ -23,11 +36,18 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            buildConfigField "String", "IMAGE_BASE_URL", "\"https://stltoken.co/medox/public/profile-image/\""
+            buildConfigField "String", "BASE_URL", "\"https://stltoken.co/medox/\""
+            buildConfigField "String", "SESSION", "\"medox\""
+            signingConfig signingConfigs.debug
+            debuggable false
         }
         debug {
-            buildConfigField "String", "IMAGE_BASE_URL", "\"https://fintechcoin.online/medox/public/profile-image/\""
-            buildConfigField "String", "BASE_URL", "\"https://fintechcoin.online/medox/\""
+            buildConfigField "String", "IMAGE_BASE_URL", "\"https://stltoken.co/medox/public/profile-image/\""
+            buildConfigField "String", "BASE_URL", "\"https://stltoken.co/medox/\""
             buildConfigField "String", "SESSION", "\"medox\""
+            debuggable true
 
         }
     }
@@ -45,7 +65,7 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.10.0'
+    implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.8.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
@@ -85,4 +105,5 @@ dependencies {
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.15.0'
     annotationProcessor('com.github.bumptech.glide:compiler:4.13.0')
+    implementation "androidmads.library.qrgenearator:QRGenearator:1.0.3"
 }

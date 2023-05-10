@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.app.medoxnetwork.R
 import com.app.medoxnetwork.base.BaseFragment
 import com.app.medoxnetwork.databinding.AlertGiftcardBinding
@@ -86,6 +87,10 @@ class HomeFragment : BaseFragment() {
 
         binding!!.addfriend.setOnClickListener {
             Invite()
+        }
+
+        binding!!.stakemnt.setOnClickListener {
+            findNavController().navigate(R.id.nav_stake)
         }
 
 

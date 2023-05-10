@@ -1,10 +1,12 @@
 package com.app.medoxnetwork.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.app.medoxnetwork.R
+import com.app.medoxnetwork.auth.Login
 import com.app.medoxnetwork.databinding.FragmentLogoutBinding
 import com.app.medoxnetwork.session.SesssionManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -55,6 +57,7 @@ class Logout  : BottomSheetDialogFragment() ,View.OnClickListener{
         {
             dismiss()
             sp.logoutSession()
+            startActivity(Intent(requireContext(),Login::class.java))
             requireActivity().finish()
         }
        else if (v?.id==R.id.cancel)

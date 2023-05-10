@@ -24,6 +24,8 @@ class ProfileViewModel @Inject constructor(
      val userwallet = MutableLiveData<ModelWalletList>()
     val walletHistory = MutableLiveData<ModelWalletHistory>()
 
+    val supportSuccess = MutableLiveData<ModelSuccess>()
+
     val error: MutableLiveData<String> = MutableLiveData()
     val loading = MutableLiveData<Boolean>()
 
@@ -75,6 +77,34 @@ class ProfileViewModel @Inject constructor(
             }
             catch (e:Exception)
             {
+                loading.postValue(false)
+                error.postValue(e.message)
+            }
+
+        }
+
+    }
+
+    fun android_support(jsonObject: LinkedHashMap<String, String>)
+    {
+        viewModelScope.launch {
+            loading.postValue(true)
+            try {
+                apiRepository.android_support(jsonObject).let {
+                    loading.postValue(false)
+                    if (it.isSuccessful){
+                        supportSuccess.postValue(it.body())
+                    }else{
+                        val res = getError(it)
+                        val respons=Gson().toJson(res)
+                        Log.d("TAG", "callAPI: "+respons)
+                        error.postValue(respons)
+                    }
+                }
+            }
+            catch (e:Exception)
+            {
+                Log.d("TAG", "registerMember: "+e.message)
                 loading.postValue(false)
                 error.postValue(e.message)
             }

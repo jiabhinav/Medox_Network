@@ -26,6 +26,22 @@ import javax.inject.Inject
 
     suspend fun android_team(bodyParams: LinkedHashMap<String, String>) = apiServices.android_team(bodyParams)
 
+    suspend fun android_deposit_page(bodyParams: LinkedHashMap<String, String>) = apiServices.android_deposit_page(bodyParams)
+
+    suspend fun android_refresh_fund(bodyParams: LinkedHashMap<String, String>) = apiServices.android_refresh_fund(bodyParams)
+
+    suspend fun  android_stake_mnt(bodyParams: LinkedHashMap<String, String>) = apiServices.android_stake_mnt(bodyParams)
+
+
+    suspend fun   android_total_team(bodyParams: LinkedHashMap<String, String>) = apiServices.android_total_team(bodyParams)
+
+    suspend fun    android_support(bodyParams: LinkedHashMap<String, String>) = apiServices. android_support(bodyParams)
+
+
+
+
+
+
 
 
 
