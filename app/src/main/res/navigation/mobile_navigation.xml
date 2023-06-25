@@ -76,4 +76,16 @@
         android:label="@string/logout"
         tools:layout="@layout/fragment_logout" />
 
+    <fragment
+        android:id="@+id/nav_withdrafund"
+        android:name="com.app.medoxnetwork.ui.home.WithdrawFundragment"
+        android:label="Withdraw Fund"
+        tools:layout="@layout/fragment_withdra_fund" />
+
+    <fragment
+        android:id="@+id/nav_withdrawhistory"
+        android:name="com.app.medoxnetwork.ui.home.WithdrawHistory"
+        android:label="Withdraw History"
+        tools:layout="@layout/fragment_withdraw_history" />
+
 </navigation>

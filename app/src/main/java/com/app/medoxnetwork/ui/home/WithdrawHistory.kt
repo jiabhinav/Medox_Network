@@ -1,33 +1,30 @@
 package com.app.medoxnetwork.ui.home
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.app.medoxnetwork.R
+import com.app.medoxnetwork.adapter.WithdrawHistoryAdapter
 import com.app.medoxnetwork.base.BaseFragment
-import com.app.medoxnetwork.databinding.FragmentHomeBinding
-import com.app.medoxnetwork.databinding.FragmentStatisticsBinding
-import com.app.medoxnetwork.databinding.FragmentTeamBinding
-import com.app.medoxnetwork.databinding.FragmentWalletBinding
+import com.app.medoxnetwork.databinding.FragmentWithdrawHistoryBinding
+import com.app.medoxnetwork.model.ModelWithdrawHistory
+
 import com.app.medoxnetwork.utils.Utility
 
-import com.app.medoxnetwork.viewmodel.StatisticsViewModel
-
+import com.app.medoxnetwork.viewmodel.WalletViewModel
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class Statistics : BaseFragment() {
+class WithdrawHistory : BaseFragment() {
 
-    lateinit var binding:FragmentStatisticsBinding
-    private val viewModel: StatisticsViewModel by viewModels()
+    lateinit var binding:FragmentWithdrawHistoryBinding
+    private val viewModel: WalletViewModel by viewModels()
+    lateinit var adapter: WithdrawHistoryAdapter
+    var listhistory=ArrayList<ModelWithdrawHistory.Result?>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,33 +36,21 @@ class Statistics : BaseFragment() {
     ): View {
         if (!this::binding.isInitialized)
         {
-            binding = FragmentStatisticsBinding.inflate(inflater, container, false)
+            binding = FragmentWithdrawHistoryBinding.inflate(inflater, container, false)
             init()
         }
         return binding.root
     }
     fun init()
     {
-        binding.card1.setOnClickListener{
-             val bundle=Bundle()
-             bundle.putInt("type",2)
-             findNavController().navigate(R.id.nav_wallet_history,bundle)
-        }
-
-        binding.withdrawHistory.setOnClickListener{
-            findNavController().navigate(R.id.nav_withdrawhistory)
-        }
-
-        binding.withdrawReward.setOnClickListener{
-            findNavController().navigate(R.id.nav_withdrafund)
-        }
-
-
+        adapter=WithdrawHistoryAdapter(requireContext(),listhistory)
+        binding.recyclerView.adapter=adapter
 
         binding.swiprefresh.setOnRefreshListener {
             binding.swiprefresh.isRefreshing=false
             callAPI()
         }
+
         observeData()
         callAPI()
     }
@@ -74,14 +59,20 @@ class Statistics : BaseFragment() {
     {
         val params = LinkedHashMap<String, String>()
         params.put("username", sp.getUser()!!.result.username)
-        viewModel.android_team(params)
+        viewModel.android_withdraw_history(params)
     }
 
     fun observeData() {
-        viewModel.userTeam.observe(requireActivity()) {
+        viewModel.withdrawHistory.observe(requireActivity()) {
             Log.d("TAG", "observeData: " + Gson().toJson(it))
             if(it.status==1)
             {
+                listhistory.clear()
+                if (it.result?.size!!>0)
+                {
+                    listhistory.addAll(it.result)
+                }
+                adapter.notifyDataSetChanged()
 
             }
             else
@@ -101,6 +92,5 @@ class Statistics : BaseFragment() {
         }
 
     }
-
 
 }

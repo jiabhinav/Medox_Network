@@ -12,13 +12,10 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.app.medoxnetwork.R
 import com.app.medoxnetwork.base.BaseFragment
-import com.app.medoxnetwork.databinding.FragmentHomeBinding
 import com.app.medoxnetwork.databinding.FragmentTeamBinding
-import com.app.medoxnetwork.databinding.FragmentWalletBinding
 import com.app.medoxnetwork.utils.Utility
-import com.app.medoxnetwork.viewmodel.HomeViewModel
+
 import com.app.medoxnetwork.viewmodel.TeamViewModel
-import com.app.medoxnetwork.viewmodel.WalletViewModel
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 

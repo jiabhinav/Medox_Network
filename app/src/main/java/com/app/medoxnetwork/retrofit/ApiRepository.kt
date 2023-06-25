@@ -35,10 +35,18 @@ import javax.inject.Inject
 
     suspend fun android_total_team(bodyParams: LinkedHashMap<String, String>) = apiServices.android_total_team(bodyParams)
 
-    suspend fun android_support(bodyParams: LinkedHashMap<String, String>) = apiServices. android_support(bodyParams)
+    suspend fun android_support(bodyParams: LinkedHashMap<String, String>) = apiServices.android_support(bodyParams)
 
 
-    suspend fun android_change_password(bodyParams: LinkedHashMap<String, String>) = apiServices. android_change_password(bodyParams)
+    suspend fun android_change_password(bodyParams: LinkedHashMap<String, String>) = apiServices.android_change_password(bodyParams)
+
+ suspend fun android_withdraw_page(bodyParams: LinkedHashMap<String, String>) =apiServices.android_withdraw_page(bodyParams)
+
+ suspend fun  android_withdraw_fund(bodyParams: LinkedHashMap<String, String>) =apiServices.android_withdraw_fund(bodyParams)
+
+ suspend fun  android_withdraw_history(bodyParams: LinkedHashMap<String, String>) =apiServices.android_withdraw_history(bodyParams)
+
+
 
 
 

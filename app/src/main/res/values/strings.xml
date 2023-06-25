@@ -39,4 +39,14 @@
     <string name="qr_code">qr_code</string>
     <string name="enter_your_info">Enter your info</string>
     <string name="generate_qr_code">Generate QR Code</string>
+    <string name="up_lime">up-line</string>
+    <string name="withdraw_amount">Withdraw Amount</string>
+    <string name="select_withdraw_type">Select withdraw type</string>
+    <string name="withdraw_fund">Withdraw Fund</string>
+
+    <string-array name="type_withdraw">
+        <item>USDT</item>
+        <item>MNT</item>
+    </string-array>
+
 </resources>

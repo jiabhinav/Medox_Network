@@ -47,7 +47,7 @@
                         android:textColor="@color/black_200"
                         android:textSize="@dimen/_12sdp"
                         android:textStyle="bold"
-                        android:text="0 MNT"/>
+                        android:text="0 $"/>
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
@@ -82,7 +82,7 @@
                         android:textColor="@color/black_200"
                         android:textSize="@dimen/_12sdp"
                         android:textStyle="bold"
-                        android:text="0 MNT"/>
+                        android:text="0 $"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -125,7 +125,7 @@
                         android:textColor="@color/black_200"
                         android:textSize="@dimen/_12sdp"
                         android:textStyle="bold"
-                        android:text="0 MNT"/>
+                        android:text="0 $"/>
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
@@ -173,7 +173,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
-                            android:text="0 MNT"
+                            android:text="0 $"
                             android:textColor="@color/black_200"
                             android:textSize="@dimen/_12sdp"
                             android:textStyle="bold" />
@@ -205,6 +205,7 @@
                         android:layout_weight=".5"
                         android:background="@drawable/round_button_wallet"
                         android:backgroundTint="@color/purple_200"
+                        android:id="@+id/withdraw_history"
                         android:gravity="center">
 
                         <ImageView
@@ -231,6 +232,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:layout_weight=".5"
+                        android:id="@+id/withdraw_reward"
                         android:background="@drawable/round_button_wallet"
                         android:gravity="center">
 
@@ -241,7 +243,7 @@
                             android:paddingTop="@dimen/_10sdp"
                             android:paddingRight="5dp"
                             android:paddingBottom="@dimen/_10sdp"
-                            android:text="Withdraw Rewards"
+                            android:text="@string/withdraw_fund"
                             android:textColor="@color/purple_200" />
 
                     </LinearLayout>

@@ -70,15 +70,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight=".5"
+                    android:padding="@dimen/_6sdp"
                     android:layout_gravity="center"
                     android:orientation="vertical">
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/_6sdp"
                         android:adjustViewBounds="true"
                         app:tint="@color/white"
                         android:src="@drawable/ic_baseline_wallet_24"/>
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -462,6 +463,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight=".5"
                 android:gravity="center"
+                android:id="@+id/withdraw"
                 android:layout_marginRight="@dimen/_5sdp"
                 android:background="@drawable/round_button_wallet"
                 >

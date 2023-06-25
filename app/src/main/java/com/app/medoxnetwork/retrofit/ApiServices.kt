@@ -1,6 +1,7 @@
 package com.app.medoxnetwork.retrofit
 
 import com.app.medoxnetwork.model.*
+import com.app.medoxnetwork.ui.home.WithdrawHistory
 import com.google.gson.JsonObject
 import retrofit2.Response
 import retrofit2.http.*
@@ -72,6 +73,23 @@ interface ApiServices {
     @FormUrlEncoded
     @POST("android-change-password")
     suspend  fun  android_change_password(@FieldMap jsonObject: LinkedHashMap<String, String>): Response<ModelSuccess>
+
+
+    @FormUrlEncoded
+    @POST("android-withdraw-page")
+    suspend  fun  android_withdraw_page(@FieldMap jsonObject: LinkedHashMap<String, String>): Response<ModelWithdrawBalance>
+
+
+    @FormUrlEncoded
+    @POST("android-withdraw-fund")
+    suspend  fun  android_withdraw_fund(@FieldMap jsonObject: LinkedHashMap<String, String>): Response<ModelSuccess>
+
+    @FormUrlEncoded
+    @POST(" android-withdraw-history")
+    suspend  fun  android_withdraw_history(@FieldMap jsonObject: LinkedHashMap<String, String>): Response<ModelWithdrawHistory>
+
+
+
 
 
 

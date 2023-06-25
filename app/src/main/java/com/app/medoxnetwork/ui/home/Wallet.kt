@@ -8,6 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.app.medoxnetwork.R
 import com.app.medoxnetwork.base.BaseFragment
@@ -18,6 +21,8 @@ import com.app.medoxnetwork.viewmodel.HomeViewModel
 import com.app.medoxnetwork.viewmodel.WalletViewModel
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class Wallet : BaseFragment() {
@@ -25,9 +30,7 @@ class Wallet : BaseFragment() {
     lateinit var binding:FragmentWalletBinding
     private val viewModel: WalletViewModel by viewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,6 +43,8 @@ class Wallet : BaseFragment() {
         }
         return binding.root
     }
+
+
     fun init()
     {
         binding.card1.setOnClickListener{
@@ -63,12 +68,18 @@ class Wallet : BaseFragment() {
             binding.swiprefresh.isRefreshing=false
             callAPI()
         }
+
         binding.lldeposit.setOnClickListener{
             findNavController().navigate(R.id.nav_deposit)
         }
 
+        binding.withdraw.setOnClickListener{
+
+        }
+
         observeData()
         callAPI()
+
     }
 
     fun callAPI()
@@ -78,32 +89,35 @@ class Wallet : BaseFragment() {
         viewModel.android_user_wallet(params)
     }
 
+
+
+
+
     fun observeData() {
+
         viewModel.userwallet.observe(requireActivity()) {
             Log.d("TAG", "observeData: " + Gson().toJson(it))
-            if(it.status==1)
-            {
+            if (it.status == 1) {
                 binding.funding.text=it.result.funding_wallet.toString()
                 binding.bonus.text=it.result.bonus_wallet.toString()
                 binding.reward.text=it.result.reward_wallet.toString()
 
-            }
-            else
-            {
+            } else {
                 Utility.showToast(getString(R.string.contecttosupport), 2)
             }
 
+
+            viewModel.error.observe(requireActivity()) {
+                Utility.showToast(it, 2)
+            }
+
+            viewModel.loading.observe(requireActivity()) {
+                loadingProgress(it)
+            }
+
         }
-
-
-        viewModel.error.observe(requireActivity()) {
-            Utility.showToast(it, 2)
-        }
-
-        viewModel.loading.observe(requireActivity()) {
-            loadingProgress(it)
-        }
-
     }
+
+
 
 }
