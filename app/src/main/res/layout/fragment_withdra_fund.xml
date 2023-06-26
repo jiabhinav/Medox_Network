@@ -68,6 +68,44 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Address"
+        android:layout_below="@+id/logo"
+        android:textColor="@color/black_500"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginLeft="5dp"
+        android:textSize="@dimen/_12sdp"
+        android:layout_gravity="start"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:layout_below="@+id/title"
+        android:background="@drawable/edit_bg"
+        android:padding="@dimen/_4sdp">
+
+
+        <EditText
+            android:id="@+id/depositaddrss"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@color/white"
+            android:hint="Enter address"
+            android:inputType="numberDecimal"
+            android:maxLength="50"
+            android:paddingLeft="@dimen/_10sdp"
+            android:paddingTop="@dimen/_6sdp"
+            android:paddingBottom="@dimen/_6sdp"
+            android:textColor="@color/dark_gray2"
+            android:textColorHint="@color/hint_color"
+            android:textSize="@dimen/_12sdp" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/withdraw_amount"
         android:layout_below="@+id/logo"
         android:textColor="@color/black_500"

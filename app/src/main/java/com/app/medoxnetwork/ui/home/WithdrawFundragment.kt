@@ -62,6 +62,10 @@ class WithdrawFundragment : BaseFragment() {
             {
                 showToast("Enter withdraw amount",2)
             }
+            else if (binding!!.depositaddrss.text.toString().equals(""))
+            {
+                showToast("Enter address",2)
+            }
             else
             {
                 callAPI()
@@ -93,6 +97,7 @@ class WithdrawFundragment : BaseFragment() {
         val params = LinkedHashMap<String, String>()
         params.put("username", sp.getUser()!!.result.username)
         params.put("amount", binding!!.editamount.text.toString())
+        params.put("address", binding!!.depositaddrss.text.toString())
         params.put("type", type)
         viewModel.android_withdraw_fund(params)
     }

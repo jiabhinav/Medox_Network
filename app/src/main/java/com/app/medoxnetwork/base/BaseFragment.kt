@@ -55,15 +55,6 @@ open class BaseFragment : Fragment() {
         }
     }
 
-    override fun onPause() {
-        super.onPause()
-    }
-
-
-    override fun onResume() {
-        super.onResume()
-
-    }
 
 
     fun loadingProgress(isLoding:Boolean)

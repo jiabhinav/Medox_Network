@@ -30,8 +30,6 @@ class Wallet : BaseFragment() {
     lateinit var binding:FragmentWalletBinding
     private val viewModel: WalletViewModel by viewModels()
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -106,15 +104,14 @@ class Wallet : BaseFragment() {
                 Utility.showToast(getString(R.string.contecttosupport), 2)
             }
 
+        }
 
-            viewModel.error.observe(requireActivity()) {
-                Utility.showToast(it, 2)
-            }
+        viewModel.error.observe(requireActivity()) {
+            Utility.showToast(it, 2)
+        }
 
-            viewModel.loading.observe(requireActivity()) {
-                loadingProgress(it)
-            }
-
+        viewModel.loading.observe(requireActivity()) {
+            loadingProgress(it)
         }
     }
 
