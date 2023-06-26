@@ -5,6 +5,6 @@ data class ModelWithdrawBalance(
     val status: Int?
 ) {
     data class Result(
-        val balance: Int?
+        val balance: Double?
     )
 }

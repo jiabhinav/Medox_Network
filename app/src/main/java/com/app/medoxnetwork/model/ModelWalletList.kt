@@ -5,8 +5,8 @@ data class ModelWalletList(
     val status: Int
 ) {
     data class Result(
-        val bonus_wallet: Int,
-        val funding_wallet: Int,
-        val reward_wallet: Int
+        val bonus_wallet: Double,
+        val funding_wallet: Double,
+        val reward_wallet: Double
     )
 }

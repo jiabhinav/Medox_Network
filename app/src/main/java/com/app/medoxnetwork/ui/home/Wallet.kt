@@ -72,7 +72,7 @@ class Wallet : BaseFragment() {
         }
 
         binding.withdraw.setOnClickListener{
-
+            findNavController().navigate(R.id.nav_withdrafund)
         }
 
         observeData()
@@ -86,8 +86,6 @@ class Wallet : BaseFragment() {
         params.put("username", sp.getUser()!!.result.username)
         viewModel.android_user_wallet(params)
     }
-
-
 
 
 
