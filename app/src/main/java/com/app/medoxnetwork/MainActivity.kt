@@ -1,12 +1,18 @@
 package com.app.medoxnetwork
 
+import android.app.Activity
 import android.content.Intent
+import android.content.IntentSender
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
@@ -16,6 +22,16 @@ import androidx.navigation.ui.*
 import com.app.medoxnetwork.base.BaseActivity
 import com.app.medoxnetwork.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
+import com.google.android.material.snackbar.Snackbar
+import com.google.android.play.core.appupdate.AppUpdateManager
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory
+import com.google.android.play.core.appupdate.AppUpdateOptions
+import com.google.android.play.core.install.InstallState
+import com.google.android.play.core.install.InstallStateUpdatedListener
+import com.google.android.play.core.install.model.AppUpdateType
+import com.google.android.play.core.install.model.InstallStatus
+import com.google.android.play.core.install.model.UpdateAvailability
+import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -23,6 +39,22 @@ class MainActivity : BaseActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+
+    private val appUpdateManager: AppUpdateManager by lazy { AppUpdateManagerFactory.create(this) }
+    private val appUpdatedListener: InstallStateUpdatedListener by lazy {
+        object : InstallStateUpdatedListener {
+            override fun onStateUpdate(installState: InstallState) {
+                when {
+                    installState.installStatus() == InstallStatus.DOWNLOADED -> popupSnackbarForCompleteUpdate()
+                    installState.installStatus() == InstallStatus.INSTALLED -> appUpdateManager.unregisterListener(this)
+                    else -> Log.d("TAG", "InstallStateUpdatedListener: state: %s"+ installState.installStatus())
+                }
+            }
+        }
+    }
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,6 +102,8 @@ class MainActivity : BaseActivity() {
                 }
             }
         }
+
+        checkForAppUpdate()
 
     }
 
@@ -125,6 +159,97 @@ class MainActivity : BaseActivity() {
         )
         startActivity(intent)
     }
+
+    override fun onResume() {
+        super.onResume()
+        updateVersionAlert()
+    }
+
+    private fun checkForAppUpdate() {
+        // Returns an intent object that you use to check for an update.
+        val appUpdateInfoTask = appUpdateManager.appUpdateInfo
+        // Checks that the platform will allow the specified type of update.
+        appUpdateInfoTask.addOnSuccessListener { appUpdateInfo ->
+            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE) {
+                // Request the update.
+                try {
+                    val installType = when {
+                        appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE) -> AppUpdateType.FLEXIBLE
+                        appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE) -> AppUpdateType.IMMEDIATE
+                        else -> null
+                    }
+                    if (installType == AppUpdateType.FLEXIBLE) appUpdateManager.registerListener(appUpdatedListener)
+
+                    appUpdateManager.startUpdateFlowForResult(
+                        // Pass the intent that is returned by 'getAppUpdateInfo()'.
+                        appUpdateInfo,
+                        // an activity result launcher registered via registerForActivityResult
+                        activityResultLauncher,
+                        // Or pass 'AppUpdateType.FLEXIBLE' to newBuilder() for
+                        // flexible updates.
+                        AppUpdateOptions.newBuilder(AppUpdateType.IMMEDIATE).build())
+
+                } catch (e: IntentSender.SendIntentException) {
+                    e.printStackTrace()
+                }
+            }
+        }
+    }
+
+    fun updateVersionAlert()
+    {
+        appUpdateManager
+            .appUpdateInfo
+            .addOnSuccessListener { appUpdateInfo ->
+
+                // If the update is downloaded but not installed,
+                // notify the user to complete the update.
+                if (appUpdateInfo.installStatus() == InstallStatus.DOWNLOADED) {
+                    popupSnackbarForCompleteUpdate()
+                }
+
+                //Check if Immediate update is required
+                try {
+                    if (appUpdateInfo.updateAvailability() == UpdateAvailability.DEVELOPER_TRIGGERED_UPDATE_IN_PROGRESS) {
+                        // If an in-app update is already running, resume the update.
+                        appUpdateManager.startUpdateFlowForResult(
+                            // Pass the intent that is returned by 'getAppUpdateInfo()'.
+                            appUpdateInfo,
+                            // an activity result launcher registered via registerForActivityResult
+                            activityResultLauncher,
+                            // Or pass 'AppUpdateType.FLEXIBLE' to newBuilder() for
+                            // flexible updates.
+                            AppUpdateOptions.newBuilder(AppUpdateType.IMMEDIATE).build())
+
+                    }
+                } catch (e: IntentSender.SendIntentException) {
+                    e.printStackTrace()
+                }
+            }
+
+    }
+
+   val activityResultLauncher=registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { result: ActivityResult ->
+       if (result.resultCode != Activity.RESULT_OK) {
+           Toast.makeText(this, "App Update failed, please try again on the next app launch.",
+               Toast.LENGTH_SHORT)
+               .show()
+       }
+
+    }
+
+
+
+    private fun popupSnackbarForCompleteUpdate() {
+        val snackbar = Snackbar.make(
+            findViewById(R.id.drawer_layout),
+            "An update has just been downloaded.",
+            Snackbar.LENGTH_INDEFINITE)
+        snackbar.setAction("RESTART") { appUpdateManager.completeUpdate() }
+        snackbar.setActionTextColor(ContextCompat.getColor(this, R.color.orange))
+        snackbar.show()
+    }
+
 
 
 }
